@@ -6,6 +6,19 @@ description: Manage Postman collections, environments, monitors, and APIs
 
 Execute Postman API operations to manage your API lifecycle. This command provides access to Postman collections, environments, monitors, and more through Python scripts.
 
+## Documentation Intelligence
+
+This plugin includes the **Postman Learning Center MCP** (`postman-docs`) for documentation access. Use it when:
+
+- User asks "how do I..." questions about Postman features
+- User needs best practices or guidance
+- User asks about V12, Agent Mode, or new features
+- User wants to understand a concept before executing
+
+**For "how do I" questions**: Query the `postman-docs` MCP first to get accurate documentation, then execute the operation.
+
+**For execution requests**: Run the scripts directly, but reference docs if the user seems confused.
+
 ## Prerequisites
 
 Before using this command, ensure:
@@ -194,9 +207,17 @@ For conceptual questions about agent-ready APIs, refer to `skills/knowledge/agen
 
 ## How to Respond
 
-When the user asks about Postman operations:
+When the user asks about Postman:
 
-1. **Understand the intent** - What do they want to do?
+1. **Understand the intent** - What do they want?
+
+   **For "how do I" / conceptual questions:**
+   - "How do I set up OAuth?" → Query `postman-docs` MCP for authentication docs
+   - "What's the best way to organize collections?" → Query `postman-docs` MCP for best practices
+   - "What's new in V12?" → Query `postman-docs` MCP for V12 features
+   - "How do monitors work?" → Query `postman-docs` MCP, then offer to show their monitors
+
+   **For action/execution requests:**
    - List resources? → Use list_collections.py
    - Manage collections? → Use manage_collections.py
    - Manage environments? → Use manage_environments.py
@@ -205,7 +226,7 @@ When the user asks about Postman operations:
    - Check agent-readiness? → Use analyze_agent_readiness.py
    - Ask about API design for AI? → Reference skills/knowledge/agent-ready-apis.md
 
-2. **Execute the appropriate script** - Run the Python script with correct arguments
+2. **Execute the appropriate action** - Query docs OR run scripts based on intent
 
 3. **Parse and present results** - Format the output in a user-friendly way
 

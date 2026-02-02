@@ -85,9 +85,22 @@ Clara checks 8 pillars:
 
 **Score 70%+ with no critical failures = Agent Ready**
 
+## Documentation Intelligence
+
+This plugin includes the **Postman Learning Center MCP** for documentation access. When you ask "how do I..." questions, Claude can pull actual Postman docs instead of guessing.
+
+```
+/postman
+How do I set up OAuth 2.0 authentication?
+```
+
+The plugin queries `https://learning.postman.com/_mcp/server` for accurate, up-to-date documentation.
+
 ## Works With
 
-This plugin complements [Postman's MCP Server](https://github.com/postmanlabs/postman-mcp-server) for live API operations.
+This plugin complements:
+- **[Postman Learning Center MCP](https://learning.postman.com/_mcp/server)** - Documentation and how-to guides (included)
+- **[Postman's MCP Server](https://github.com/postmanlabs/postman-mcp-server)** - Live API operations
 
 ## License
 
