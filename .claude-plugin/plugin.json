@@ -1,0 +1,24 @@
+{
+  "name": "postman-skill",
+  "version": "1.0.0",
+  "description": "Postman API lifecycle management for Claude Code. Manage collections, environments, monitors, mocks, and analyze APIs for agent-readiness.",
+  "author": "Sterling Chin",
+  "repository": "https://github.com/sterlingchin/postman-slash-command",
+  "license": "MIT",
+  "keywords": [
+    "postman",
+    "api",
+    "collections",
+    "testing",
+    "mocks",
+    "monitors",
+    "agent-ready",
+    "clara"
+  ],
+  "components": {
+    "commands": ["postman"]
+  },
+  "dependencies": {
+    "python": ">=3.7"
+  }
+}

@@ -1,0 +1,8 @@
+# Postman Slash Command Dependencies
+
+# Optional: For easier .env file loading (has fallback if not available)
+python-dotenv>=0.19.0
+
+# Note: This project uses curl via subprocess for HTTP requests
+# to avoid external Python dependencies. Make sure curl is installed
+# on your system (usually pre-installed on macOS and Linux).
