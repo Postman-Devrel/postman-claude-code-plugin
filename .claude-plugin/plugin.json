@@ -7,7 +7,7 @@
     "url": "https://www.postman.com"
   },
   "homepage": "https://learning.postman.com/docs/developer/postman-mcp-server/",
-  "repository": "https://github.com/Postman-Devrel/postman-plugin",
+  "repository": "https://github.com/Postman-Devrel/postman-claude-code-plugin",
   "license": "Apache-2.0",
   "keywords": [
     "postman",

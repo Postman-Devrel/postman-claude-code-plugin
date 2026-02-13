@@ -5,7 +5,7 @@ Full API lifecycle management inside Claude Code. One install, zero manual MCP c
 ## Installation
 
 ```bash
-claude plugin install postman@Postman-Devrel/postman-plugin
+claude plugin install postman@Postman-Devrel/postman-claude-code-plugin
 ```
 
 ## Quick Start
