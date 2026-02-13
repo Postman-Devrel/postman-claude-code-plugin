@@ -4,8 +4,17 @@ Full API lifecycle management inside Claude Code. One install, zero manual MCP c
 
 ## Installation
 
+Clone the repo and load it as a local plugin:
+
 ```bash
-claude plugin install postman@Postman-Devrel/postman-claude-code-plugin
+git clone https://github.com/Postman-Devrel/postman-claude-code-plugin.git
+```
+
+Then start Claude Code with the plugin loaded:
+
+```bash
+cd your-api-project/
+claude --plugin-dir /path/to/postman-claude-code-plugin
 ```
 
 ## Quick Start
@@ -14,8 +23,14 @@ claude plugin install postman@Postman-Devrel/postman-claude-code-plugin
 ```bash
 export POSTMAN_API_KEY=PMAK-your-key-here
 ```
+Add it to your shell profile (`~/.zshrc` or `~/.bashrc`) to persist across sessions.
 
-2. Run setup:
+2. Start Claude Code with the plugin:
+```bash
+claude --plugin-dir /path/to/postman-claude-code-plugin
+```
+
+3. Run setup:
 ```
 /postman:setup
 ```
@@ -116,17 +131,6 @@ The built-in readiness analyzer evaluates APIs for AI agent compatibility across
 ## How It Works
 
 The plugin bundles a `.mcp.json` file that auto-configures the [Postman MCP Server](https://github.com/postmanlabs/postman-mcp-server) when installed. All commands communicate with Postman through 111 MCP tools. No scripts, no dependencies, pure MCP.
-
-## Development
-
-To test the plugin locally during development:
-
-```bash
-cd your-api-project/
-claude --plugin-dir /path/to/postman-plugin
-```
-
-This loads the plugin from a local directory instead of the marketplace.
 
 ## License
 
