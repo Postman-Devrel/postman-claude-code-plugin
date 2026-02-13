@@ -1,33 +1,24 @@
 {
-  "name": "postman-skill",
-  "version": "1.1.0",
-  "description": "Postman API lifecycle management for Claude Code. Manage collections, environments, monitors, mocks, and analyze APIs for agent-readiness. Includes Learning Center docs integration.",
-  "author": "Sterling Chin",
-  "repository": "https://github.com/sterlingchin/postman-slash-command",
-  "license": "MIT",
+  "name": "postman",
+  "version": "1.0.0",
+  "description": "Full API lifecycle management for Claude Code. Sync collections, generate client code, discover APIs, run tests, create mocks, publish docs, and audit security. Powered by the Postman MCP Server.",
+  "author": {
+    "name": "Postman",
+    "url": "https://www.postman.com"
+  },
+  "homepage": "https://learning.postman.com/docs/developer/postman-mcp-server/",
+  "repository": "https://github.com/postmanlabs/claude-code-postman-plugin",
+  "license": "Apache-2.0",
   "keywords": [
     "postman",
     "api",
     "collections",
     "testing",
-    "mocks",
-    "monitors",
-    "agent-ready",
-    "clara",
     "mcp",
-    "documentation"
-  ],
-  "components": {
-    "commands": ["postman"]
-  },
-  "mcpServers": {
-    "postman-docs": {
-      "type": "http",
-      "url": "https://learning.postman.com/_mcp/server",
-      "description": "Postman Learning Center documentation - how-to guides, best practices, feature docs"
-    }
-  },
-  "dependencies": {
-    "python": ">=3.7"
-  }
+    "mocks",
+    "documentation",
+    "security",
+    "openapi",
+    "agent-ready"
+  ]
 }
