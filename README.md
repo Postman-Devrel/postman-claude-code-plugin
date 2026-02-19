@@ -1,6 +1,11 @@
 # Postman Plugin for Claude Code
 
-Full API lifecycle management inside Claude Code. One install, zero manual MCP configuration.
+The Postman Plugin provides a single, simple install for Claude Code. It provides full API lifecycle management, and best practices when working with Postman APIs. 
+
+What's included: 
+- Commands for setting up the Postman MCP Server (no more manual installs!), working with Collections, Tests, Mock Servers, and generating code and documentation from Collections
+- Skills for Postman Routing, API best practices, and API OWASP security reviews
+- Agent for reviewing API production readiness and providing recommendations based on the <a href="https://www.postman.com/ai/90-day-ai-readiness-playbook/">Postman API Readiness Guide."</a>
 
 ## Installation
 
