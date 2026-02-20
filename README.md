@@ -7,7 +7,7 @@
 The Postman Plugin provides a single, simple install for Claude Code. It provides full API lifecycle management, and best practices when working with Postman APIs. 
 
 <p align="center">
-  <img src="assets/postman-plugin-sync.gif" alt="Postman Plugin sync demo" width="800">
+  <img src="assets/postman-plugin-sync.gif" alt="Postman plugin syncing code -> collection" width="800">
 </p>
 
 ## What's included:
@@ -55,7 +55,7 @@ Get your API key at [postman.postman.co/settings/me/api-keys](https://postman.po
 ## Commands
 
 <p align="center">
-  <img src="assets/postman-plugin-codegen.gif" alt="Postman Plugin sync demo" width="800">
+  <img src="assets/postman-plugin-codegen.gif" alt="Postman Plugin generating code from a collection" width="800">
 </p>
 
 | Command | What It Does |
@@ -72,7 +72,7 @@ Get your API key at [postman.postman.co/settings/me/api-keys](https://postman.po
 ## What You Can Do
 
 <p align="center">
-  <img src="assets/postman-plugin-mock-server.gif" alt="Postman Plugin sync demo" width="800">
+  <img src="assets/postman-plugin-mock-server.gif" alt="Postman Plugin creating a mock server to be used in code to mock an API" width="800">
 </p>
 
 ### Sync your API to Postman
@@ -129,7 +129,7 @@ You don't need to remember command names. The plugin's routing skill detects you
 ## API Readiness Analyzer
 
 <p align="center">
-  <img src="assets/postman-plugin-api-ai-check.gif" alt="Postman Plugin sync demo" width="800">
+  <img src="assets/postman-plugin-api-ai-check.gif" alt="Postman Plugin analyzing your API for AI Readiness" width="800">
 </p>
 
 The built-in readiness analyzer evaluates APIs for AI agent compatibility across 8 pillars:
