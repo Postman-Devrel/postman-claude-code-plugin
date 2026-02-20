@@ -1,8 +1,16 @@
+<p align="center">
+  <img src="https://voyager.postman.com/logo/postman-logo-orange.svg" alt="Postman" width="320">
+</p>
+
 # Postman Plugin for Claude Code
 
 The Postman Plugin provides a single, simple install for Claude Code. It provides full API lifecycle management, and best practices when working with Postman APIs. 
 
-What's included: 
+<p align="center">
+  <img src="assets/postman-plugin-sync.gif" alt="Postman Plugin sync demo" width="800">
+</p>
+
+## What's included:
 - Commands for setting up the Postman MCP Server (no more manual installs!), working with Collections, Tests, Mock Servers, and generating code and documentation from Collections
 - Skills for Postman Routing, API best practices, and API OWASP security reviews
 - Agent for reviewing API production readiness and providing recommendations based on the <a href="https://www.postman.com/ai/90-day-ai-readiness-playbook/">Postman API Readiness Guide."</a>
@@ -46,6 +54,10 @@ Get your API key at [postman.postman.co/settings/me/api-keys](https://postman.po
 
 ## Commands
 
+<p align="center">
+  <img src="assets/postman-plugin-codegen.gif" alt="Postman Plugin sync demo" width="800">
+</p>
+
 | Command | What It Does |
 |---------|-------------|
 | `/postman:setup` | Configure API key, verify connection, select workspace |
@@ -58,6 +70,10 @@ Get your API key at [postman.postman.co/settings/me/api-keys](https://postman.po
 | `/postman:security` | Security audit against OWASP API Top 10 |
 
 ## What You Can Do
+
+<p align="center">
+  <img src="assets/postman-plugin-mock-server.gif" alt="Postman Plugin sync demo" width="800">
+</p>
 
 ### Sync your API to Postman
 ```
@@ -111,6 +127,10 @@ You don't need to remember command names. The plugin's routing skill detects you
 - "Is my API agent-ready?" triggers the readiness analyzer
 
 ## API Readiness Analyzer
+
+<p align="center">
+  <img src="assets/postman-plugin-api-ai-check.gif" alt="Postman Plugin sync demo" width="800">
+</p>
 
 The built-in readiness analyzer evaluates APIs for AI agent compatibility across 8 pillars:
 
