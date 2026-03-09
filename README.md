@@ -13,7 +13,7 @@ The Postman Plugin provides a single, simple install for Claude Code. It provide
 ## What's included:
 - Commands for setting up the Postman MCP Server (no more manual installs!), working with Collections, Tests, Mock Servers, and generating code and documentation from Collections
 - Skills for Postman Routing, API best practices, and API OWASP security reviews
-- Agent for reviewing API production readiness and providing recommendations based on the <a href="https://www.postman.com/ai/90-day-ai-readiness-playbook/">Postman API Readiness Guide."</a>
+- Agent for reviewing API production readiness and providing recommendations based on the <a href="https://www.postman.com/ai/90-day-ai-readiness-playbook/">Postman API Readiness Guide</a>.
 
 ## Installation
 
@@ -160,6 +160,12 @@ The plugin bundles a `.mcp.json` file that auto-configures the [Postman MCP Serv
 ## License
 
 Apache-2.0
+
+## See Also
+
+- [Postman Plugin for Cursor](https://github.com/Postman-Devrel/cursor-postman-plugin) - Same capabilities, adapted for Cursor IDE
+- [Postman Agent Skills](https://github.com/Postman-Devrel/agent-skills) - Portable skills for any skills.sh-compatible agent
+- [Postman Cursor Rules](https://github.com/Postman-Devrel/postman-cursor-rules) - Lightweight MCP config + rules for Cursor
 
 ## Links
 
