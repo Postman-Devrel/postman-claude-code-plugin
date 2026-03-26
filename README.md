@@ -63,7 +63,7 @@ Get your API key at [postman.postman.co/settings/me/api-keys](https://postman.po
 | `/postman:setup` | Configure API key, verify connection, select workspace |
 | `/postman:sync` | Create or update Postman collections from OpenAPI specs |
 | `/postman:codegen` | Generate typed client code from any Postman collection |
-| `/postman:search` | Find APIs across your private workspaces |
+| `/postman:search` | Find APIs across your org's private network, your workspaces and the public Postman network |
 | `/postman:test` | Run collection tests, diagnose failures, suggest fixes |
 | `/postman:mock` | Create mock servers for frontend development |
 | `/postman:docs` | Generate, improve, and publish API documentation |
