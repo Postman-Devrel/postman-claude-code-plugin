@@ -15,9 +15,9 @@ The Postman MCP Server must be connected. If MCP tools aren't available, tell th
 
 ### Step 1: Find the API
 
-1. Call `getWorkspaces` to get the user's workspace ID. If multiple workspaces exist, ask which to use.
-2. Call `getCollections` with the `workspace` parameter. Use the `name` filter if the user specified an API name.
-3. If no results in private workspace, fall back to `searchPostmanElements` to search the public Postman network.
+1. Call `searchPostmanElementsInPrivateNetwork` with the API name to find it in the organization's private network.
+2. If no results, call `getWorkspaces` to get the user's workspace ID. If multiple workspaces exist, ask which to use. Then use `getCollections` with the `workspace` parameter and `name` filter if the user specified an API name.
+3. If still no results, fall back to `searchPostmanElementsInPublicNetwork` to search the public Postman network.
 4. If multiple matches, list them and ask which one.
 5. Call `getCollection` to get the full collection.
 6. Call `getSpecDefinition` if a linked spec exists (richer type info).

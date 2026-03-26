@@ -63,7 +63,7 @@ If workspace is empty:
 ```
 Your workspace is empty. You can:
   /postman:sync     — Push a local OpenAPI spec to Postman
-  /postman:search   — Search the public Postman API Network
+  /postman:search   — Search for APIs across your org's private network or the public Postman network
 ```
 
 ### Step 4: Suggest First Command

@@ -27,7 +27,7 @@ Reference for Postman concepts and MCP tool selection. Use this context when wor
 |------|----------|
 | Push code changes to Postman | Create/update spec in Spec Hub, then sync to collection |
 | Consume a Postman API | Read collection + generate client code |
-| Find an API | Search workspace collections, then drill into details |
+| Find an API | Search workspace collections in private network/user's workspaces/public network, then drill into details |
 | Test an API | Run collection with `runCollection` |
 | Create a fake API for frontend | Create mock server from collection with examples |
 | Document an API | Analyze collection completeness, fill gaps, optionally publish |
@@ -45,7 +45,7 @@ Reference for Postman concepts and MCP tool selection. Use this context when wor
 **Mocks:** `getMocks`, `getMock`, `createMock`, `publishMock`, `unpublishMock`
 **Tests:** `runCollection`
 **Docs:** `publishDocumentation`, `unpublishDocumentation`
-**Search:** `searchPostmanElements` (public network only), `getTaggedEntities`
+**Search:** `searchPostmanElementsInPrivateNetwork` (private/org APIs, default), `searchPostmanElementsInPublicNetwork` (public network), `getTaggedEntities`
 **User:** `getAuthenticatedUser`
 
 See `mcp-limitations.md` in this skill folder for known limitations and workarounds.
