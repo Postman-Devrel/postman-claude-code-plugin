@@ -2,6 +2,12 @@
 
 These limitations are documented so they are handled correctly in all commands and workflows.
 
+## searchPostmanElements is Public-Only
+
+`searchPostmanElements` searches the PUBLIC Postman network only, not the user's private workspaces.
+
+**Workaround:** For private content, use `getWorkspaces` + `getCollections` + `getCollection`. Use `searchPostmanElements` only as a fallback when searching for public APIs.
+
 ## generateCollection is Async
 
 `generateCollection` returns HTTP 202 (accepted), not the collection directly.

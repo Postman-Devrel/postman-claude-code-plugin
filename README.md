@@ -58,16 +58,16 @@ Get your API key at [postman.postman.co/settings/me/api-keys](https://postman.po
   <img src="assets/postman-plugin-codegen.gif" alt="Postman Plugin generating code from a collection" width="800">
 </p>
 
-| Command | What It Does                                                                                |
-|---------|---------------------------------------------------------------------------------------------|
-| `/postman:setup` | Configure API key, verify connection, select workspace                                      |
-| `/postman:sync` | Create or update Postman collections from OpenAPI specs                                     |
-| `/postman:codegen` | Generate typed client code from any Postman collection                                      |
-| `/postman:search` | Find APIs across your org's private network, your workspaces and the public Postman network |
-| `/postman:test` | Run collection tests, diagnose failures, suggest fixes                                      |
-| `/postman:mock` | Create mock servers for frontend development                                                |
-| `/postman:docs` | Generate, improve, and publish API documentation                                            |
-| `/postman:security` | Security audit against OWASP API Top 10                                                     |
+| Command | What It Does |
+|---------|-------------|
+| `/postman:setup` | Configure API key, verify connection, select workspace |
+| `/postman:sync` | Create or update Postman collections from OpenAPI specs |
+| `/postman:codegen` | Generate typed client code from any Postman collection |
+| `/postman:search` | Find APIs across your private workspaces |
+| `/postman:test` | Run collection tests, diagnose failures, suggest fixes |
+| `/postman:mock` | Create mock servers for frontend development |
+| `/postman:docs` | Generate, improve, and publish API documentation |
+| `/postman:security` | Security audit against OWASP API Top 10 |
 
 ## What You Can Do
 

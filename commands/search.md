@@ -15,13 +15,14 @@ The Postman MCP Server must be connected. If MCP tools aren't available, tell th
 
 ### Step 1: Search
 
-1. Call `searchPostmanElementsInPrivateNetwork` with the user's query. This searches the organization's private API network and is the **primary** search path.
-2. If private network results are sparse or private network search is not available, broaden the search:
-   - Call `getWorkspaces` to get the user's workspace ID. If multiple workspaces exist, ask which to use. Then use `getCollections` with the `workspace` parameter. Use the `name` filter to narrow results.
-   - Call `getTaggedEntities` to find collections by tag.
-3. If the user is looking for a public/third-party API (e.g., Stripe, GitHub, Twilio), call `searchPostmanElementsInPublicNetwork` with the user's query.
+1. Call `getWorkspaces` to get the user's workspace ID. If multiple workspaces exist, ask which to use.
+2. Call `getCollections` with the `workspace` parameter. Use the `name` filter to narrow results.
+3. If results are sparse, broaden the search:
+   - Call `getTaggedEntities` to find collections by tag
+   - Call `getWorkspaces` to search across all workspaces
+   - As a fallback for public APIs, call `searchPostmanElements` with the user's query
 
-**Important:** Default to `searchPostmanElementsInPrivateNetwork` for trusted APIs in user's organisation. Only use `searchPostmanElementsInPublicNetwork` when the user explicitly wants public/third-party APIs or private search returns no results.
+**Important:** `searchPostmanElements` only searches the PUBLIC Postman network, not private workspaces. Always search private workspace first using `getCollections`.
 
 ### Step 2: Drill Into Results
 
@@ -73,6 +74,6 @@ List relevant collections with endpoint counts, then ask which to explore furthe
 ## Error Handling
 
 - **MCP not configured:** "Run `/postman:setup` to configure the Postman MCP Server."
-- **No results:** "Nothing matched in your private API network. Try different keywords, browse in user's workspaces, or search the public Postman network."
+- **No results:** "Nothing matched in your workspace. Try different keywords, or search the public Postman network with broader terms."
 - **401 Unauthorized:** "Your Postman API key was rejected. Generate a new one at https://postman.postman.co/settings/me/api-keys and run `/postman:setup`."
 - **Too many results:** Ask the user to be more specific. Suggest filtering by workspace or using tags.
