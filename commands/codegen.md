@@ -88,6 +88,6 @@ Generated: src/clients/users-api.ts
 
 - **MCP not configured:** "Run `/postman:setup` to configure the Postman MCP Server."
 - **Collection not found:** "No collection matching that name. Run `/postman:search` to find available APIs."
-- **401 Unauthorized:** "Your Postman API key was rejected. Generate a new one at https://postman.postman.co/settings/me/api-keys and run `/postman:setup`."
+- **401 Unauthorized:** "Your Postman API key was rejected. Generate a new one at https://go.postman.co/settings/me/api-keys and run `/postman:setup`."
 - **Empty collection:** "This collection has no requests. Add endpoints in Postman or use `/postman:sync` to push a spec."
 - **Language not detected:** Ask the user what language to generate.

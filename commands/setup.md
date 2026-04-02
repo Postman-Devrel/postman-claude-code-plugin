@@ -22,7 +22,7 @@ Verify the Postman MCP Server is available by calling `getAuthenticatedUser`.
 ```
 Let's set up Postman for Claude Code.
 
-1. Go to: https://postman.postman.co/settings/me/api-keys
+1. Go to: https://go.postman.co/settings/me/api-keys
 2. Click "Generate API Key"
 3. Name it "Claude Code"
 4. Copy the key (starts with PMAK-)
@@ -36,7 +36,7 @@ Add it to your shell profile (~/.zshrc or ~/.bashrc) to persist across sessions.
 
 Wait for the user to confirm they've set the key. Then verify with `getAuthenticatedUser`.
 
-**If 401:** "API key was rejected. Check for extra spaces or generate a new one at https://postman.postman.co/settings/me/api-keys"
+**If 401:** "API key was rejected. Check for extra spaces or generate a new one at https://go.postman.co/settings/me/api-keys"
 
 **If timeout:** "Can't reach the Postman MCP Server. Check your network and https://status.postman.com"
 
@@ -94,6 +94,6 @@ Try this:
 
 - **MCP tools not available:** "The Postman MCP Server isn't loaded. Make sure the plugin is installed and restart Claude Code."
 - **API key not set:** Walk through Step 2 above.
-- **401 Unauthorized:** "Your API key was rejected. Generate a new one at https://postman.postman.co/settings/me/api-keys"
+- **401 Unauthorized:** "Your API key was rejected. Generate a new one at https://go.postman.co/settings/me/api-keys"
 - **Network timeout:** "Can't reach the Postman MCP Server. Check your network and https://status.postman.com for outages."
 - **Plan limitations:** "Some features (team workspaces, monitors) require a paid Postman plan. Core commands work on all plans."
