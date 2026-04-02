@@ -74,5 +74,5 @@ List relevant collections with endpoint counts, then ask which to explore furthe
 
 - **MCP not configured:** "Run `/postman:setup` to configure the Postman MCP Server."
 - **No results:** "Nothing matched in your private API network. Try different keywords, browse in user's workspaces, or search the public Postman network."
-- **401 Unauthorized:** "Your Postman API key was rejected. Generate a new one at https://postman.postman.co/settings/me/api-keys and run `/postman:setup`."
+- **401 Unauthorized:** "Your Postman API key was rejected. Generate a new one at https://go.postman.co/settings/me/api-keys and run `/postman:setup`."
 - **Too many results:** Ask the user to be more specific. Suggest filtering by workspace or using tags.

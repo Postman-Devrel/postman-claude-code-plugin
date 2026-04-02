@@ -79,7 +79,7 @@ Collection synced: "Pet Store API" (15 requests)
 
 - **MCP not configured:** "Run `/postman:setup` to configure the Postman MCP Server."
 - **MCP timeout:** Retry once. If `generateCollection` or `syncCollectionWithSpec` times out, the spec may be too large. Suggest breaking it into smaller specs by domain.
-- **401 Unauthorized:** "Your Postman API key was rejected. Generate a new one at https://postman.postman.co/settings/me/api-keys and run `/postman:setup`."
+- **401 Unauthorized:** "Your Postman API key was rejected. Generate a new one at https://go.postman.co/settings/me/api-keys and run `/postman:setup`."
 - **Invalid spec:** Report specific parse errors with line numbers. Offer to fix common YAML/JSON syntax issues.
 - **Async operation stuck:** If polling shows no progress after 30 seconds, inform the user and suggest checking the Postman app directly.
 - **Plan limitations:** "Workspace creation may be limited on free plans. Using your default workspace instead."
