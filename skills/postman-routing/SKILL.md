@@ -21,6 +21,9 @@ When the user's request involves Postman or APIs, route to the appropriate comma
 | Generate docs, improve documentation, publish docs | `/postman:docs` | Analyzes completeness, fills gaps, can publish to Postman |
 | Security audit, check for vulnerabilities, OWASP | `/postman:security` | 20+ security checks with severity scoring and remediation |
 | Set up Postman, configure API key, first-time setup | `/postman:setup` | Guided setup with workspace verification |
+| Send a request, test endpoint, hit the API, call URL | `/postman:send-request` | CLI-based HTTP requests with auth, headers, body support |
+| Generate spec, create OpenAPI, document my API | `/postman:generate-spec` | Scans code for routes, generates OpenAPI YAML, validates with lint |
+| Run collection tests, verify changes, check if tests pass | `/postman:run-collection` | Runs collection by cloud ID, parses results, suggests fixes |
 | Is my API agent-ready?, scan my API, analyze my spec | **readiness-analyzer agent** | 48 checks across 8 pillars, scoring and fix recommendations |
 
 ## Routing Rules
