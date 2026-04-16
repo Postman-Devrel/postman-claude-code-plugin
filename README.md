@@ -50,7 +50,7 @@ claude --plugin-dir /path/to/postman-claude-code-plugin
 
 That's it. The plugin auto-configures the Postman MCP Server, verifies your connection, and lists your workspaces. You're ready to go.
 
-Get your API key at [postman.postman.co/settings/me/api-keys](https://postman.postman.co/settings/me/api-keys).
+Get your API key at [go.postman.co/settings/me/api-keys](https://go.postman.co/settings/me/api-keys).
 
 ## Commands
 
@@ -170,5 +170,5 @@ Apache-2.0
 ## Links
 
 - [Postman MCP Server Docs](https://learning.postman.com/docs/developer/postman-mcp-server/)
-- [Get a Postman API Key](https://postman.postman.co/settings/me/api-keys)
+- [Get a Postman API Key](https://go.postman.co/settings/me/api-keys)
 - [Postman Status](https://status.postman.com)
