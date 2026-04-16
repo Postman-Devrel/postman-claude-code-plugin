@@ -96,6 +96,6 @@ If the user wants the mock publicly accessible:
 
 - **MCP not configured:** "Run `/postman:setup` to configure the Postman MCP Server."
 - **No examples in collection:** Auto-generate from schemas (Step 2). If no schemas either, ask the user to provide sample responses.
-- **401 Unauthorized:** "Your Postman API key was rejected. Generate a new one at https://postman.postman.co/settings/me/api-keys and run `/postman:setup`."
+- **401 Unauthorized:** "Your Postman API key was rejected. Generate a new one at https://go.postman.co/settings/me/api-keys and run `/postman:setup`."
 - **MCP timeout:** Retry once. If it still fails, check https://status.postman.com for outages.
 - **Plan limitations:** "Mock server creation may require a Postman Basic plan or higher for increased usage limits."

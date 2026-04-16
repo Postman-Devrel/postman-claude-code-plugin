@@ -79,6 +79,6 @@ If the tests themselves need updating (not the API):
 
 - **MCP not configured:** "Run `/postman:setup` to configure the Postman MCP Server."
 - **Collection not found:** "No collection matching that name. Run `/postman:search` to find available collections, or `/postman:sync` to create one."
-- **401 Unauthorized:** "Your Postman API key was rejected. Generate a new one at https://postman.postman.co/settings/me/api-keys and run `/postman:setup`."
+- **401 Unauthorized:** "Your Postman API key was rejected. Generate a new one at https://go.postman.co/settings/me/api-keys and run `/postman:setup`."
 - **MCP timeout:** Retry once. For large collections, suggest running a single folder to narrow the test run.
 - **Plan limitations:** "Collection runs may require a Postman Basic plan or higher for increased limits."

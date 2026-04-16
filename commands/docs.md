@@ -82,7 +82,7 @@ If both a spec and collection exist, keep them in sync:
 ## Error Handling
 
 - **MCP not configured:** Local markdown docs can be generated without MCP. For Postman publishing: "Run `/postman:setup` to configure the Postman MCP Server."
-- **401 Unauthorized:** "Your Postman API key was rejected. Generate a new one at https://postman.postman.co/settings/me/api-keys and run `/postman:setup`."
+- **401 Unauthorized:** "Your Postman API key was rejected. Generate a new one at https://go.postman.co/settings/me/api-keys and run `/postman:setup`."
 - **Invalid spec:** Report parse errors and offer to fix common YAML/JSON syntax issues.
 - **Plan limitations:** "Publishing documentation may require a paid Postman plan. Check https://www.postman.com/pricing/"
 - **Too many results:** Ask the user to specify a collection by name.
