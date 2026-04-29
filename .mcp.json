@@ -4,7 +4,6 @@
       "type": "http",
       "url": "https://mcp.postman.com/mcp",
       "headers": {
-        "Authorization": "Bearer ${POSTMAN_API_KEY}",
         "X-Source": "claude-code-plugin"
       }
     }
