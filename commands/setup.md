@@ -1,6 +1,6 @@
 ---
 description: Set up Postman MCP Server. Authenticate via OAuth or API key, verify connection, select workspace.
-allowed-tools: mcp__postman__*, mcp__postman__authenticate, mcp__postman__complete_authentication
+allowed-tools: mcp__postman__*
 ---
 
 # First-Run Configuration
