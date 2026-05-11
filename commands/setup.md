@@ -115,7 +115,6 @@ Based on what the user has:
 Try one of these:
   /postman:search   — Find APIs across your workspace
   /postman:test     — Run collection tests
-  /postman:codegen  — Generate client code from a collection
 ```
 
 **Has specs but no collections:**
