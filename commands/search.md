@@ -51,6 +51,8 @@ Yes, you can get a user's email via the API.
       "name": "Jane Smith",
       "role": "admin"
     }
+
+  Want me to generate a client for this API? → /postman:codegen
 ```
 
 **When not found:**

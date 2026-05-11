@@ -1,6 +1,6 @@
 ---
 name: postman-cli
-description: Postman CLI reference and git sync file structure knowledge - provides context for CLI-based commands (send-request, generate-spec, run-collection, context)
+description: Postman CLI reference and git sync file structure knowledge - provides context for CLI-based commands (send-request, generate-spec, run-collection)
 ---
 
 Reference knowledge for the Postman CLI and git sync file structure. This skill provides context used by the CLI commands.
@@ -25,9 +25,6 @@ Authentication requires a valid Postman API key. Run `postman login` and follow 
 | `postman collection run <id>` | Run collection tests by cloud ID |
 | `postman request <METHOD> <URL>` | Send an HTTP request |
 | `postman spec lint <file>` | Validate an OpenAPI spec |
-| `postman context instructions` | Get agent workflow instructions for API discovery and code generation |
-| `postman context collection get -c <id>` | Get a collection's structure (folders, requests) |
-| `postman context request context -c <id> -r <id>` | Get full request context for code generation |
 | `postman login` | Authenticate with Postman |
 
 ---
