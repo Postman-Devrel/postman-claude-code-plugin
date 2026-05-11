@@ -14,6 +14,7 @@ When the user's request involves Postman or APIs, route to the appropriate comma
 |-------------|---------|-----|
 | Import a spec, push spec to Postman, create collection from spec | `/postman:sync` | Creates spec + collection + environment, handles async polling |
 | Sync collection, update collection, keep in sync, push changes | `/postman:sync` | Full sync workflow with change reporting |
+| Generate client code, SDK, wrapper, consume an API | `/postman:codegen` | Reads collection shape, detects language, writes typed code |
 | Find API, search endpoints, what's available, is there an API for | `/postman:search` | Searches private workspace first, drills into details |
 | Run tests, check if tests pass, validate API | `/postman:test` | Runs collection, parses results, diagnoses failures, suggests fixes |
 | Create mock server, fake API, mock for frontend | `/postman:mock` | Checks for examples, generates missing ones, provides integration config |
@@ -23,7 +24,6 @@ When the user's request involves Postman or APIs, route to the appropriate comma
 | Send a request, test endpoint, hit the API, call URL | `/postman:send-request` | CLI-based HTTP requests with auth, headers, body support |
 | Generate spec, create OpenAPI, document my API | `/postman:generate-spec` | Scans code for routes, generates OpenAPI YAML, validates with lint |
 | Run collection tests, verify changes, check if tests pass | `/postman:run-collection` | Runs collection by cloud ID, parses results, suggests fixes |
-| Explore API, install API, integrate with API, generate client from Postman collection, maintain installed requests or client code | `/postman:context` | Fetches real API definitions, generates and maintains typed client code. |
 | Is my API agent-ready?, scan my API, analyze my spec | **readiness-analyzer agent** | 48 checks across 8 pillars, scoring and fix recommendations |
 
 ## Routing Rules

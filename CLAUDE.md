@@ -12,7 +12,7 @@ The Postman Plugin for Claude Code — a pure-markdown, configuration-driven plu
 .claude-plugin/plugin.json   # Plugin manifest (name, version, metadata)
 .mcp.json                    # MCP server auto-config (Postman MCP at mcp.postman.com)
 commands/*.md                # 11 slash commands (/postman:<name>)
-skills/*/SKILL.md            # 8 skills (routing, knowledge, agent-ready APIs, CLI, send-request, generate-spec, run-collection, context)
+skills/*/SKILL.md            # 7 skills (routing, knowledge, agent-ready APIs, CLI, send-request, generate-spec, run-collection)
 agents/readiness-analyzer.md # Sub-agent for API readiness analysis
 examples/                    # Sample output (readiness report)
 assets/                      # GIFs for README
@@ -29,10 +29,10 @@ assets/                      # GIFs for README
 ## Component Conventions
 
 **Commands** (`commands/*.md`): YAML front matter with `description` and `allowed-tools`. Each defines a structured workflow invoked as `/postman:<name>`.
-- MCP commands: setup, sync, search, test, mock, docs, security
+- MCP commands: setup, sync, codegen, search, test, mock, docs, security
 - CLI commands: request, generate-spec, run-collection
 
-**Skills** (`skills/*/SKILL.md`): YAML front matter with `name`, `description`, `user-invocable`. Auto-injected context, not directly invoked. `postman-routing` routes requests to commands; `postman-knowledge` provides MCP tool guidance; `agent-ready-apis` provides readiness criteria; `postman-cli` provides CLI and git sync file structure knowledge; `postman-context` provides API discovery, exploration, and code generation from real API definitions via `postman context` CLI commands.
+**Skills** (`skills/*/SKILL.md`): YAML front matter with `name`, `description`, `user-invocable`. Auto-injected context, not directly invoked. `postman-routing` routes requests to commands; `postman-knowledge` provides MCP tool guidance; `agent-ready-apis` provides readiness criteria; `postman-cli` provides CLI and git sync file structure knowledge.
 
 **Agent** (`agents/readiness-analyzer.md`): YAML front matter with `name`, `description`, `model`, `allowed-tools`. Runs as a sub-agent (sonnet model) for deep API readiness analysis (8 pillars, 48 checks).
 
@@ -53,7 +53,6 @@ Three commands use the Postman CLI instead of MCP. They require `postman-cli` in
 - `/postman:request` — Send HTTP requests via `postman request <METHOD> <URL>`
 - `/postman:generate-spec` — Scan code for API routes, generate OpenAPI 3.0 YAML, validate with `postman spec lint`
 - `/postman:run-collection` — Run collection tests via `postman collection run <id>` using cloud IDs from `.postman/resources.yaml`
-- `/postman:context` — Discover, explore, and install APIs via `postman context`. Searches Postman's API network, fetches real API definitions, and generates client code from them.
 
 CLI commands work with Postman's git sync structure: `postman/collections/` (v3 folder format), `postman/environments/`, `postman/specs/`, and `.postman/resources.yaml` for cloud ID mapping.
 

@@ -62,8 +62,8 @@ Get your API key at [go.postman.co/settings/me/api-keys](https://go.postman.co/s
 |---------|-------------|
 | `/postman:setup` | Configure API key, verify connection, select workspace |
 | `/postman:sync` | Create or update Postman collections from OpenAPI specs |
+| `/postman:codegen` | Generate typed client code from any Postman collection |
 | `/postman:search` | Find APIs across your org's private network, your workspaces and the public Postman network |
-| `/postman:context` | Fetch real API definitions, generate and maintain typed client code |
 | `/postman:test` | Run collection tests, diagnose failures, suggest fixes |
 | `/postman:mock` | Create mock servers for frontend development |
 | `/postman:docs` | Generate, improve, and publish API documentation |
@@ -122,6 +122,7 @@ Get your API key at [go.postman.co/settings/me/api-keys](https://go.postman.co/s
 You don't need to remember command names. The plugin's routing skill detects your intent and runs the right command:
 
 - "Sync my collection" routes to `/postman:sync`
+- "Generate a client" routes to `/postman:codegen`
 - "Check for vulnerabilities" routes to `/postman:security`
 - "Is my API agent-ready?" triggers the readiness analyzer
 
