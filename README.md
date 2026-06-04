@@ -6,9 +6,7 @@
 
 The Postman Plugin provides a single, simple install for Claude Code. It provides full API lifecycle management, and best practices when working with Postman APIs. 
 
-<p align="center">
-  <img src="assets/postman-plugin-sync.gif" alt="Postman plugin syncing code -> collection" width="800">
-</p>
+https://github.com/user-attachments/assets/4fdaa183-e8cd-4658-b5f4-f9d3684fbf46
 
 ## What's included:
 - Commands for setting up the Postman MCP Server (no more manual installs!), working with Collections, Tests, Mock Servers, and generating code and documentation from Collections
@@ -54,9 +52,7 @@ Get your API key at [go.postman.co/settings/me/api-keys](https://go.postman.co/s
 
 ## Commands
 
-<p align="center">
-  <img src="assets/postman-plugin-codegen.gif" alt="Postman Plugin generating code from a collection" width="800">
-</p>
+https://github.com/user-attachments/assets/a6d19b9b-aa1d-4815-8379-8b76beeba2df
 
 | Command | What It Does |
 |---------|-------------|
@@ -71,9 +67,7 @@ Get your API key at [go.postman.co/settings/me/api-keys](https://go.postman.co/s
 
 ## What You Can Do
 
-<p align="center">
-  <img src="assets/postman-plugin-mock-server.gif" alt="Postman Plugin creating a mock server to be used in code to mock an API" width="800">
-</p>
+https://github.com/user-attachments/assets/8fa52dc1-6e0b-4fb5-8005-e2d614a1d50e
 
 ### Sync your API to Postman
 ```
@@ -127,9 +121,7 @@ You don't need to remember command names. The plugin's routing skill detects you
 
 ## API Readiness Analyzer
 
-<p align="center">
-  <img src="assets/postman-plugin-api-ai-check.gif" alt="Postman Plugin analyzing your API for AI Readiness" width="800">
-</p>
+https://github.com/user-attachments/assets/20e4edfb-d7c6-493d-82ff-79dd0403cd83
 
 The built-in readiness analyzer evaluates APIs for AI agent compatibility across 8 pillars:
 
