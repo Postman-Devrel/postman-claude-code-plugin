@@ -1,6 +1,6 @@
 ---
 description: Sync Postman collections with your API code. Create collections from specs, push updates, keep everything in sync.
-allowed-tools: Bash, Read, Write, Glob, Grep, mcp__postman__*
+allowed-tools: Bash, Read, Write, Glob, Grep, mcp__postman__getWorkspaces, mcp__postman__getCollections, mcp__postman__getCollection, mcp__postman__createSpec, mcp__postman__updateSpecFile, mcp__postman__generateCollection, mcp__postman__getAsyncSpecTaskStatus, mcp__postman__getGeneratedCollectionSpecs, mcp__postman__syncCollectionWithSpec, mcp__postman__syncSpecWithCollection, mcp__postman__getCollectionUpdatesTasks, mcp__postman__createEnvironment, mcp__postman__createCollectionRequest, mcp__postman__updateCollectionRequest, mcp__postman__createCollectionFolder, mcp__postman__createCollectionResponse
 ---
 
 # Sync Collections
@@ -38,7 +38,7 @@ Call `getWorkspaces` to get the user's workspace ID. If multiple workspaces exis
    - `name`: from the spec's `info.title`
    - `type`: one of `OPENAPI:2.0`, `OPENAPI:3.0`, `OPENAPI:3.1`, `ASYNCAPI:2.0`
    - `files`: array of `{path, content}` objects
-3. Call `generateCollection` from the spec. **This is async (HTTP 202).** Poll `getAsyncSpecTaskStatus` or `getGeneratedCollectionSpecs` until complete.
+3. Call `generateCollection` from the spec. **This is async (HTTP 202).** Poll `getAsyncSpecTaskStatus` or `getGeneratedCollectionSpecs` until complete, with increasing waits between polls (2s, 4s, 8s). Don't narrate intermediate poll results — report only the final outcome.
 4. Call `createEnvironment` with variables extracted from the spec:
    - `base_url` from `servers[0].url`
    - Auth variables from `securitySchemes` (mark as `secret`)
@@ -48,7 +48,7 @@ Call `getWorkspaces` to get the user's workspace ID. If multiple workspaces exis
 
 **Spec to Collection (most common):**
 1. Call `createSpec` or `updateSpecFile` with local spec content
-2. Call `syncCollectionWithSpec` to update the collection. **Async (HTTP 202).** Poll `getCollectionUpdatesTasks` for completion.
+2. Call `syncCollectionWithSpec` to update the collection. **Async (HTTP 202).** Poll `getCollectionUpdatesTasks` for completion with increasing waits between polls.
 3. **Note:** `syncCollectionWithSpec` only supports OpenAPI 3.0. For Swagger 2.0 or OpenAPI 3.1, use `updateSpecFile` and regenerate the collection.
 4. Report what changed
 

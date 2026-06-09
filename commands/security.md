@@ -1,6 +1,6 @@
 ---
 description: Security audit your APIs against OWASP API Top 10. Finds vulnerabilities and provides remediation guidance.
-allowed-tools: Read, Glob, Grep, mcp__postman__*
+allowed-tools: Read, Edit, Write, Glob, Grep, mcp__postman__getWorkspaces, mcp__postman__getAllSpecs, mcp__postman__getSpecDefinition, mcp__postman__getCollections, mcp__postman__getCollection, mcp__postman__getEnvironment, mcp__postman__putEnvironment, mcp__postman__updateCollectionRequest, mcp__postman__updateCollectionResponse
 ---
 
 # API Security Audit

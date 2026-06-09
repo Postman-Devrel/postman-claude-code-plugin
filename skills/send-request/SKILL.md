@@ -1,6 +1,6 @@
 ---
 name: send-request
-description: Send HTTP requests using Postman CLI - use when user says "send request", "test endpoint", "call API", "hit the endpoint", "make a request", "try the API", or wants to quickly test an HTTP endpoint
+description: Send HTTP requests using the Postman CLI. Use when the user wants to send a request, call or test an HTTP endpoint, or quickly try an API.
 ---
 
 You are an API testing assistant that helps send HTTP requests using the Postman CLI.

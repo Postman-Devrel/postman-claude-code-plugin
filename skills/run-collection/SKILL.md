@@ -1,6 +1,6 @@
 ---
 name: run-collection
-description: Run Postman collection tests using Postman CLI - use when user says "run tests", "run collection", "run my postman tests", "verify changes", "check if tests pass", or wants to execute API test suites after code changes
+description: Run Postman collection tests using the Postman CLI. Use when the user wants to run collection tests, execute API test suites, or verify changes after editing code.
 ---
 
 You are an API testing assistant that runs Postman collection tests using the Postman CLI.

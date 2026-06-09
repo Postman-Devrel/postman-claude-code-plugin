@@ -6,13 +6,9 @@
 
 The Postman Plugin provides a single, simple install for Claude Code. It provides full API lifecycle management, and best practices when working with Postman APIs. 
 
-<p align="center">
-  <img src="assets/postman-plugin-sync.gif" alt="Postman plugin syncing code -> collection" width="800">
-</p>
-
 ## What's included:
 - Commands for setting up the Postman MCP Server (no more manual installs!), working with Collections, Tests, Mock Servers, and generating code and documentation from Collections
-- Skills for Postman Routing, API best practices, and API OWASP security reviews
+- Skills for API discovery and client code generation, OpenAPI spec generation, Postman CLI workflows, and API best practices
 - Agent for reviewing API production readiness and providing recommendations based on the <a href="https://www.postman.com/ai/90-day-ai-readiness-playbook/">Postman API Readiness Guide</a>.
 
 ## Installation
@@ -32,31 +28,25 @@ claude --plugin-dir /path/to/postman-claude-code-plugin
 
 ## Quick Start
 
-1. Set your API key:
-```bash
-export POSTMAN_API_KEY=PMAK-your-key-here
-```
-Add it to your shell profile (`~/.zshrc` or `~/.bashrc`) to persist across sessions.
-
-2. Start Claude Code with the plugin:
+1. Start Claude Code with the plugin:
 ```bash
 claude --plugin-dir /path/to/postman-claude-code-plugin
 ```
 
-3. Run setup:
+2. Run setup:
 ```
 /postman:setup
 ```
 
+3. Authenticate when prompted — **OAuth (recommended)**, which opens a browser sign-in with no key copying, or an API key:
+```bash
+export POSTMAN_API_KEY=PMAK-your-key-here
+```
+If you use an API key, add it to your shell profile (`~/.zshrc` or `~/.bashrc`) to persist across sessions. Get one at [go.postman.co/settings/me/api-keys](https://go.postman.co/settings/me/api-keys).
+
 That's it. The plugin auto-configures the Postman MCP Server, verifies your connection, and lists your workspaces. You're ready to go.
 
-Get your API key at [go.postman.co/settings/me/api-keys](https://go.postman.co/settings/me/api-keys).
-
 ## Commands
-
-<p align="center">
-  <img src="assets/postman-plugin-codegen.gif" alt="Postman Plugin generating code from a collection" width="800">
-</p>
 
 | Command | What It Does |
 |---------|-------------|
@@ -70,10 +60,6 @@ Get your API key at [go.postman.co/settings/me/api-keys](https://go.postman.co/s
 | `/postman:security` | Security audit against OWASP API Top 10 |
 
 ## What You Can Do
-
-<p align="center">
-  <img src="assets/postman-plugin-mock-server.gif" alt="Postman Plugin creating a mock server to be used in code to mock an API" width="800">
-</p>
 
 ### Sync your API to Postman
 ```
@@ -117,19 +103,15 @@ Get your API key at [go.postman.co/settings/me/api-keys](https://go.postman.co/s
 → 48 checks across 8 pillars, scored 0-100, prioritized fix recommendations
 ```
 
-## Auto-Routing
+## Natural Language Routing
 
-You don't need to remember command names. The plugin's routing skill detects your intent and runs the right command:
+You don't need to remember command names. Claude matches your intent to the right command or skill natively:
 
-- "Sync my collection" routes to `/postman:sync`
-- "Check for vulnerabilities" routes to `/postman:security`
+- "Sync my collection" runs `/postman:sync`
+- "Check for vulnerabilities" runs `/postman:security`
 - "Is my API agent-ready?" triggers the readiness analyzer
 
 ## API Readiness Analyzer
-
-<p align="center">
-  <img src="assets/postman-plugin-api-ai-check.gif" alt="Postman Plugin analyzing your API for AI Readiness" width="800">
-</p>
 
 The built-in readiness analyzer evaluates APIs for AI agent compatibility across 8 pillars:
 
@@ -149,12 +131,19 @@ The built-in readiness analyzer evaluates APIs for AI agent compatibility across
 ## Requirements
 
 - Claude Code v1.0.33+
-- Postman API key (`POSTMAN_API_KEY` environment variable)
+- A Postman account — authenticate via OAuth during `/postman:setup`, or set a `POSTMAN_API_KEY` environment variable
 - No Python, Node, or other runtime dependencies
 
 ## How It Works
 
-The plugin bundles a `.mcp.json` file that auto-configures the [Postman MCP Server](https://github.com/postmanlabs/postman-mcp-server) when installed. All commands communicate with Postman through 111 MCP tools. No scripts, no dependencies, pure MCP.
+The plugin bundles a `.mcp.json` file that auto-configures the [Postman MCP Server](https://github.com/postmanlabs/postman-mcp-server) when installed. All commands communicate with Postman through MCP tools. No scripts, no dependencies, pure MCP.
+
+By default the plugin connects to the full Postman MCP Server (100+ tools). Recent Claude Code versions load MCP tool schemas on demand, so the full server adds little context overhead. If you're on an older client or want a lighter session, set `POSTMAN_MCP_MODE` before starting Claude Code to pick a smaller server mode:
+
+```bash
+export POSTMAN_MCP_MODE=minimal   # ~42 CRUD tools; code-generation (context) tools unavailable
+export POSTMAN_MCP_MODE=code      # ~24 read-only tools for API discovery and client code generation
+```
 
 ## License
 
