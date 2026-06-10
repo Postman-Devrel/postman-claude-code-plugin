@@ -9,7 +9,13 @@ from typing import Optional
 # PyYAML is not guaranteed on all runners, so parse simple YAML manually
 FRONTMATTER_RE = re.compile(r"^---\s*\n(.*?)\n---", re.DOTALL)
 
-KNOWN_TOOLS = {"Bash", "Read", "Write", "Glob", "Grep", "mcp__postman__*"}
+KNOWN_TOOLS = {"Bash", "Read", "Write", "Edit", "Glob", "Grep"}
+# Specific Postman MCP tools are preferred over the mcp__postman__* wildcard
+MCP_TOOL_RE = re.compile(r"^mcp__postman__[A-Za-z0-9_]+$")
+
+
+def is_known_tool(tool: str) -> bool:
+    return tool in KNOWN_TOOLS or MCP_TOOL_RE.match(tool) is not None
 
 
 def parse_frontmatter(text: str) -> Optional[dict]:
@@ -46,7 +52,7 @@ def validate_commands(root: Path) -> list[str]:
         if "allowed-tools" in fm and fm["allowed-tools"]:
             tools = [t.strip() for t in fm["allowed-tools"].split(",")]
             for tool in tools:
-                if tool not in KNOWN_TOOLS:
+                if not is_known_tool(tool):
                     errors.append(f"{f.name}: Unknown tool '{tool}' in allowed-tools")
 
     return errors
@@ -98,7 +104,7 @@ def validate_agents(root: Path) -> list[str]:
         if "allowed-tools" in fm and fm["allowed-tools"]:
             tools = [t.strip() for t in fm["allowed-tools"].split(",")]
             for tool in tools:
-                if tool not in KNOWN_TOOLS:
+                if not is_known_tool(tool):
                     errors.append(f"agents/{f.name}: Unknown tool '{tool}' in allowed-tools")
 
     return errors
