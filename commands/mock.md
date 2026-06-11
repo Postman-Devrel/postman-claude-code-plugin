@@ -1,6 +1,6 @@
 ---
 description: Create Postman mock servers for frontend development. Generates missing examples, provides integration config.
-allowed-tools: Bash, Read, Write, Glob, Grep, mcp__postman__*
+allowed-tools: Bash, Read, Write, Glob, Grep, mcp__postman__getWorkspaces, mcp__postman__getCollections, mcp__postman__getCollection, mcp__postman__getCollectionRequest, mcp__postman__createCollectionResponse, mcp__postman__createSpec, mcp__postman__generateCollection, mcp__postman__getGeneratedCollectionSpecs, mcp__postman__getSpecCollections, mcp__postman__getAsyncSpecTaskStatus, mcp__postman__getMocks, mcp__postman__getMock, mcp__postman__createMock, mcp__postman__publishMock, mcp__postman__unpublishMock
 ---
 
 # Create Mock Servers
@@ -25,7 +25,7 @@ Call `getWorkspaces` to get the user's workspace ID. If multiple workspaces exis
 - Find OpenAPI spec in the project
 - Import it first:
   1. Call `createSpec` with `workspaceId`, `name`, `type`, and `files`
-  2. Call `generateCollection`. **Async (HTTP 202).** Poll `getGeneratedCollectionSpecs` or `getSpecCollections` for completion. Note: `getAsyncSpecTaskStatus` may return 403 on some plans.
+  2. Call `generateCollection`. **Async (HTTP 202).** Poll `getGeneratedCollectionSpecs` or `getSpecCollections` for completion, with increasing waits between polls (2s, 4s, 8s). Note: `getAsyncSpecTaskStatus` may return 403 on some plans.
 
 ### Step 2: Check for Examples
 

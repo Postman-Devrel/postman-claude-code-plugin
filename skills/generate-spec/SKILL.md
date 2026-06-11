@@ -1,18 +1,15 @@
 ---
 name: generate-spec
-description: Generate or update an OpenAPI specification from code - use when user says "generate spec", "create spec", "create openapi spec", "update spec", "generate API documentation", "create API definition", "write openapi", "document my API", "create swagger", or wants to create/update an API specification from their codebase
+description: Generate or update an OpenAPI 3.0 spec from code. Use when the user wants to create, update, or write an OpenAPI/Swagger spec, API definition, or API documentation from their codebase.
 ---
 
 You are an API specification assistant that generates and updates OpenAPI 3.0 specifications by analyzing the user's codebase.
 
 ## When to Use This Skill
 
-Trigger this skill when:
-- User asks to "generate a spec" or "create an OpenAPI spec"
-- User wants to "document my API" or "create API documentation"
-- User says "update the spec" or "sync spec with code"
-- User asks to "create a swagger file" or "write an API definition"
-- User wants to generate an API spec from their existing routes/endpoints
+Use this skill when the user wants to generate, create, or update an OpenAPI/Swagger spec or API definition from their existing routes and endpoints.
+
+A reference file in this skill's directory, `references/spec-template.md`, contains the full OpenAPI structure template and example workflows. Read it with the Read tool when you reach Step 3.
 
 ---
 
@@ -88,91 +85,7 @@ ls openapi.yaml openapi.yml openapi.json swagger.yaml swagger.yml swagger.json a
 
 ## Step 3: Generate the OpenAPI 3.0 Spec
 
-Build a valid OpenAPI 3.0 specification in YAML format. Follow this structure:
-
-```yaml
-openapi: 3.0.3
-info:
-  title: <API name from package.json, pyproject.toml, or project name>
-  version: <version from package.json or "1.0.0">
-  description: <brief description of the API>
-servers:
-  - url: http://localhost:<port>
-    description: Local development server
-paths:
-  /endpoint:
-    get:
-      summary: <short description>
-      description: <detailed description>
-      operationId: <unique camelCase identifier>
-      tags:
-        - <group name>
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: string
-          description: <parameter description>
-      responses:
-        "200":
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ModelName"
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "404":
-          description: Not found
-        "500":
-          description: Internal server error
-    post:
-      summary: <short description>
-      operationId: <unique camelCase identifier>
-      tags:
-        - <group name>
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CreateModel"
-      responses:
-        "201":
-          description: Created successfully
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ModelName"
-components:
-  schemas:
-    ModelName:
-      type: object
-      required:
-        - id
-        - name
-      properties:
-        id:
-          type: string
-          description: Unique identifier
-        name:
-          type: string
-          description: Display name
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-    apiKey:
-      type: apiKey
-      in: header
-      name: X-API-Key
-```
-
-### Key rules for generating the spec:
+Read `references/spec-template.md` for the full YAML structure template, then build a valid OpenAPI 3.0 specification in YAML format following these rules:
 
 1. **Derive from code, don't guess** — Only include endpoints that actually exist in the codebase
 2. **Extract real schemas** — Use model definitions, TypeScript types, Pydantic models, or struct definitions to build component schemas
@@ -236,77 +149,7 @@ If Postman CLI is not installed, tell the user: "Install Postman CLI (`npm insta
 
 ## Step 6: Report Results
 
-**New spec created:**
-```
-Created OpenAPI 3.0 spec at postman/specs/openapi.yaml
-
-Endpoints documented: 12
-  GET    /api/users
-  POST   /api/users
-  GET    /api/users/:id
-  PUT    /api/users/:id
-  DELETE /api/users/:id
-  ...
-
-Schemas defined: 5
-  User, CreateUser, UpdateUser, ErrorResponse, PaginatedResponse
-
-Validation: ✓ No errors
-```
-
-**Existing spec updated:**
-```
-Updated OpenAPI spec at postman/specs/openapi.yaml
-
-Changes:
-  Added: POST /api/orders, GET /api/orders/:id
-  Updated: GET /api/users (added query parameters)
-  Removed: DELETE /api/legacy/cleanup (endpoint no longer exists)
-
-New schemas: Order, CreateOrder
-Validation: ✓ No errors
-```
-
----
-
-## Example Workflows
-
-### Generate spec from scratch
-```
-User: "generate an openapi spec for my API"
-
-You:
-1. Scan project for route definitions
-2. Read route files and extract endpoints
-3. Read models/types for schemas
-4. Generate openapi.yaml
-5. Validate with postman spec lint
-6. Report: "Created spec with 12 endpoints and 5 schemas"
-```
-
-### Update spec after code changes
-```
-User: "update the spec, I added new endpoints"
-
-You:
-1. Read existing spec
-2. Scan code for all current endpoints
-3. Diff against existing spec
-4. Add new endpoints, update changed ones
-5. Validate
-6. Report: "Added 2 new endpoints, updated 1"
-```
-
-### Generate spec for specific routes
-```
-User: "create a spec for the user routes"
-
-You:
-1. Find user-related route files
-2. Extract only user endpoints
-3. Generate focused spec
-4. Validate and report
-```
+Report concisely what was created or changed: the file path, endpoints documented (count and list), schemas defined, changes from the previous spec (added/updated/removed) when updating, and the validation result.
 
 ---
 

@@ -1,8 +1,8 @@
 ---
 name: API Readiness Analyzer
-description: "Analyze any API for AI agent compatibility. Scans OpenAPI specs across 8 pillars (48 checks), scores agent-readiness, and provides fix recommendations. Triggers on: 'Is my API agent-ready?', 'Scan my API', 'Analyze my OpenAPI spec', 'What\\'s wrong with my API for AI agents?', 'How agent-friendly is my API?'."
+description: Analyze any API or OpenAPI spec for AI agent compatibility — 48 checks across 8 pillars, with scoring and fix recommendations. Use when the user asks whether an API is agent-ready or wants it scanned, scored, or improved for AI agents.
 model: sonnet
-allowed-tools: Read, Glob, Grep, Bash, mcp__postman__*
+allowed-tools: Read, Edit, Write, Glob, Grep, Bash, mcp__postman__getWorkspaces, mcp__postman__getAllSpecs, mcp__postman__getSpecDefinition, mcp__postman__createSpec, mcp__postman__generateCollection, mcp__postman__getAsyncSpecTaskStatus, mcp__postman__getGeneratedCollectionSpecs, mcp__postman__createEnvironment, mcp__postman__createMock, mcp__postman__runCollection, mcp__postman__publishDocumentation
 ---
 
 # API Readiness Analyzer

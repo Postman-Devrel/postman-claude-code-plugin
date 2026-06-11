@@ -1,6 +1,6 @@
 ---
 description: Run Postman collection tests, analyze results, diagnose failures, and suggest fixes.
-allowed-tools: Bash, Read, Write, Glob, Grep, mcp__postman__*
+allowed-tools: Bash, Read, Write, Glob, Grep, mcp__postman__getWorkspaces, mcp__postman__getCollections, mcp__postman__getCollection, mcp__postman__runCollection, mcp__postman__getEnvironments, mcp__postman__getCollectionRequest, mcp__postman__getCollectionResponse, mcp__postman__updateCollectionRequest, mcp__postman__updateCollectionResponse
 ---
 
 # Run Collection Tests

@@ -1,6 +1,6 @@
 ---
 description: Discover APIs across your Postman workspaces. Ask natural language questions about available endpoints and capabilities.
-allowed-tools: Read, Glob, Grep, mcp__postman__*
+allowed-tools: Read, Glob, Grep, mcp__postman__searchPostmanElementsInPrivateNetwork, mcp__postman__searchPostmanElementsInPublicNetwork, mcp__postman__getWorkspaces, mcp__postman__getCollections, mcp__postman__getTaggedEntities, mcp__postman__getCollection, mcp__postman__getCollectionRequest, mcp__postman__getCollectionResponse, mcp__postman__getSpecDefinition
 ---
 
 # Discover APIs

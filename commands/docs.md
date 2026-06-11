@@ -1,6 +1,6 @@
 ---
 description: Generate, improve, and publish API documentation from Postman collections.
-allowed-tools: Read, Glob, Grep, mcp__postman__*
+allowed-tools: Read, Write, Glob, Grep, mcp__postman__getWorkspaces, mcp__postman__getAllSpecs, mcp__postman__getSpecDefinition, mcp__postman__getCollections, mcp__postman__getCollection, mcp__postman__updateCollectionRequest, mcp__postman__publishDocumentation, mcp__postman__unpublishDocumentation, mcp__postman__syncCollectionWithSpec, mcp__postman__syncSpecWithCollection, mcp__postman__getCollectionUpdatesTasks
 ---
 
 # API Documentation
@@ -76,7 +76,7 @@ Ask the user which output they want:
 ### Step 5: Sync Spec and Collection
 
 If both a spec and collection exist, keep them in sync:
-- Call `syncCollectionWithSpec` to update collection from spec. **Async (HTTP 202).** Poll `getCollectionUpdatesTasks` for completion. Only supports OpenAPI 3.0.
+- Call `syncCollectionWithSpec` to update collection from spec. **Async (HTTP 202).** Poll `getCollectionUpdatesTasks` for completion with increasing waits between polls. Only supports OpenAPI 3.0.
 - Or call `syncSpecWithCollection` to update spec from collection changes.
 
 ## Error Handling
