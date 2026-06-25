@@ -43,7 +43,7 @@ Large skills use progressive disclosure: a lean SKILL.md holds the workflow, and
 
 These are documented in `skills/postman-knowledge/mcp-limitations.md` and must be respected in all commands:
 
-- `searchPostmanElements` searches PUBLIC network only — use `getWorkspaces` + `getCollections` for private content
+- `searchPostmanElements` is the unified search tool — pass `ownership: organization` (default) for the user's org resources, `external` for the public Postman network, or `all` for both. Use the `privateNetwork` filter to restrict to the Private API Network.
 - `generateCollection` and `syncCollectionWithSpec` return HTTP 202 — must poll for completion
 - `syncCollectionWithSpec` supports OpenAPI 3.0 only — use `updateSpecFile` + `generateCollection` for Swagger 2.0 or OpenAPI 3.1
 - `createCollection` creates flat collections — nest via `createCollectionFolder` + `createCollectionRequest`
