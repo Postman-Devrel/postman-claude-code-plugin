@@ -15,7 +15,7 @@ The Postman MCP Server must be connected. If MCP tools aren't available, tell th
 
 ### Step 1: Search
 
-Use the unified `searchPostmanElements` tool. It searches across requests, collections, workspaces, specs, and flows in a single call. Choose `entityType`, `ownership`, and `filters` based on the user's intent.
+Use the unified `searchPostmanElements` tool. It can search across various entity types like requests, collections, workspaces, specs, flows, environments and mocks. Choose `entityType`, `ownership`, and `filters` based on the user's intent.
 
 1. Call `searchPostmanElements` with the user's query. Pick the parameters from the user's intent:
    - `entityType`: `requests` (default), `collections`, `workspaces`, `specs`, or `flows`.
