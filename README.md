@@ -52,7 +52,7 @@ That's it. The plugin auto-configures the Postman MCP Server, verifies your conn
 |---------|-------------|
 | `/postman:setup` | Configure API key, verify connection, select workspace |
 | `/postman:sync` | Create or update Postman collections from OpenAPI specs |
-| `/postman:search` | Find APIs across your org's private network, your workspaces and the public Postman network |
+| `/postman:search` | Find APIs across your org's resources, your workspaces, and the public Postman network |
 | `/postman:context` | Fetch real API definitions, generate and maintain typed client code |
 | `/postman:test` | Run collection tests, diagnose failures, suggest fixes |
 | `/postman:mock` | Create mock servers for frontend development |
@@ -76,7 +76,7 @@ That's it. The plugin auto-configures the Postman MCP Server, verifies your conn
 ### Search across your workspace
 ```
 "Is there an endpoint that returns user emails?"
-→ Searches private collections, drills into endpoint details, shows response shapes
+→ Searches across your org's collections, drills into endpoint details, shows response shapes
 ```
 
 ### Run API tests

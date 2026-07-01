@@ -69,7 +69,7 @@ Meet the user where they are. The workflow below describes the full path from se
 
 ### Step 1: Find the API
 
-**Public APIs:** For well-known third-party APIs, use `searchPostmanElementsInPublicNetwork` to search the public API network. Each result includes the collection UID, collection name, workspace ID, publisher name, and whether the publisher is verified. When presenting results, include Postman links (`https://go.postman.co/collection/<uid>`) so the user can explore in Postman if they want.
+**Public APIs:** For well-known third-party APIs, use `searchPostmanElements` with `ownership: external` to search the public API network. Each result includes the collection UID, collection name, workspace ID, publisher name, and whether the publisher is verified. When presenting results, include Postman links (`https://go.postman.co/collection/<uid>`) so the user can explore in Postman if they want.
 
 **Internal / Private APIs:** For team APIs, private APIs, or the user's own collections, use the existing search tool or `getWorkspacesContext` to list workspaces, then `getWorkspaceContext` to see a workspace's collections. If the user says "my" (e.g. "my APIs", "my workspaces"), filter to personal workspaces only — this dramatically reduces noise when the team has many workspaces.
 
