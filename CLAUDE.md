@@ -11,7 +11,7 @@ The Postman Plugin for Claude Code — a pure-markdown, configuration-driven plu
 ```
 .claude-plugin/plugin.json   # Plugin manifest (name, version, metadata)
 .mcp.json                    # MCP server auto-config (Postman MCP at mcp.postman.com)
-commands/*.md                # 10 slash commands (/postman:<name>)
+commands/*.md                # 11 slash commands (/postman:<name>)
 skills/*/SKILL.md            # 7 skills (knowledge, agent-ready APIs, CLI, send-request, generate-spec, run-collection, context)
 skills/*/references/*.md     # On-demand reference files loaded by skills only when needed
 agents/readiness-analyzer.md # Sub-agent for API readiness analysis
@@ -30,7 +30,7 @@ examples/                    # Sample output (readiness report)
 ## Component Conventions
 
 **Commands** (`commands/*.md`): YAML front matter with `description` and `allowed-tools`. Each defines a structured workflow invoked as `/postman:<name>`.
-- MCP commands: setup, sync, search, test, mock, docs, security
+- MCP commands: setup, sync, search, test, mock, docs, security, learn (learn requires Full mode — `searchLearningCenter` is absent in `minimal`/`code`)
 - CLI commands: request, generate-spec, run-collection
 
 **Skills** (`skills/*/SKILL.md`): YAML front matter with `name`, `description`, `user-invocable`. Auto-injected context, not directly invoked. `postman-knowledge` provides MCP tool guidance; `agent-ready-apis` provides readiness criteria; `postman-cli` provides CLI and git sync file structure knowledge; `postman-context` provides API discovery, exploration, and code generation from real API definitions.
