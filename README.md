@@ -58,6 +58,7 @@ That's it. The plugin auto-configures the Postman MCP Server, verifies your conn
 | `/postman:mock` | Create mock servers for frontend development |
 | `/postman:docs` | Generate, improve, and publish API documentation |
 | `/postman:security` | Security audit against OWASP API Top 10 |
+| `/postman:learn` | Search the Postman Learning Center for how-to guidance and suggested workflows (Full mode) |
 
 ## What You Can Do
 

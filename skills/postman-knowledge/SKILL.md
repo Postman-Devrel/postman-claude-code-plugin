@@ -32,6 +32,7 @@ Reference for Postman concepts and MCP tool selection. Use this context when wor
 | Create a fake API for frontend | Create mock server from collection with examples |
 | Document an API | Analyze collection completeness, fill gaps, optionally publish |
 | Audit API security | Run security checks against spec or collection |
+| Learn how to use a Postman feature | Search Postman docs with `searchLearningCenter` (Full mode) |
 
 ## MCP Tool Selection
 
@@ -46,6 +47,7 @@ Reference for Postman concepts and MCP tool selection. Use this context when wor
 **Tests:** `runCollection`
 **Docs:** `publishDocumentation`, `unpublishDocumentation`
 **Search:** `searchPostmanElements` , `getTaggedEntities`
+**Learning Center:** `searchLearningCenter` (Full mode only — searches Postman product docs for how-to guidance)
 **User:** `getAuthenticatedUser`
 
 See `mcp-limitations.md` in this skill folder for known limitations and workarounds.
