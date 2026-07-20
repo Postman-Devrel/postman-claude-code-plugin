@@ -69,3 +69,10 @@ CLI commands work with Postman's git sync structure: `postman/collections/` (v3 
 - The `allowed-tools` field in front matter controls what tools a command/agent can use
 - CLI commands need `Bash` in `allowed-tools`; MCP commands list the specific `mcp__postman__<toolName>` tools they call — never the `mcp__postman__*` wildcard. When a command's workflow gains a new MCP call, add that tool to its `allowed-tools`
 - Front-matter `description` fields are injected into every user session — keep them to one or two sentences (what it does + when to use it)
+
+## Versioning & Releases
+
+- The plugin follows [Semantic Versioning](https://semver.org). `version` in `.claude-plugin/plugin.json` is the single source of truth
+- Every user-facing change bumps the version and adds an entry under `## [Unreleased]` in `CHANGELOG.md` (added a command/skill → minor; fix/tweak → patch; breaking change → major)
+- To release: bump `plugin.json`, move `[Unreleased]` notes into a dated `## [X.Y.Z]` section, merge to `main`, then `git tag vX.Y.Z && git push origin vX.Y.Z`
+- The `Release` GitHub Actions workflow (`.github/workflows/release.yml`) triggers on `v*` tags: it fails if the tag doesn't match `plugin.json`, extracts the matching CHANGELOG section, and publishes a GitHub Release with those notes
