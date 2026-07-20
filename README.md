@@ -13,24 +13,37 @@ The Postman Plugin provides a single, simple install for Claude Code. It provide
 
 ## Installation
 
-Clone the repo and load it as a local plugin:
+Install directly from Anthropic's official plugin marketplace — no clone, no build.
+
+**In Claude Code:**
+```
+/plugin install postman@claude-plugins-official
+```
+
+**Or from your terminal:**
+```bash
+claude plugin install postman@claude-plugins-official
+```
+
+The `claude-plugins-official` marketplace is registered automatically on first launch, so there's nothing to add. When prompted, pick an install scope (user, project, or local). That's it — the plugin's commands and skills are available immediately.
+
+<details>
+<summary>Install from source (for local development)</summary>
+
+Clone the repo and load it with `--plugin-dir`:
 
 ```bash
 git clone https://github.com/Postman-Devrel/postman-claude-code-plugin.git
-```
-
-Then start Claude Code with the plugin loaded:
-
-```bash
 cd your-api-project/
 claude --plugin-dir /path/to/postman-claude-code-plugin
 ```
+</details>
 
 ## Quick Start
 
-1. Start Claude Code with the plugin:
+1. Start Claude Code (the plugin loads automatically once installed):
 ```bash
-claude --plugin-dir /path/to/postman-claude-code-plugin
+claude
 ```
 
 2. Run setup:
@@ -131,7 +144,7 @@ The built-in readiness analyzer evaluates APIs for AI agent compatibility across
 
 ## Requirements
 
-- Claude Code v1.0.33+
+- A recent version of Claude Code with plugin-marketplace support (`/plugin`)
 - A Postman account — authenticate via OAuth during `/postman:setup`, or set a `POSTMAN_API_KEY` environment variable
 - No Python, Node, or other runtime dependencies
 
