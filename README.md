@@ -13,24 +13,27 @@ The Postman Plugin provides a single, simple install for Claude Code. It provide
 
 ## Installation
 
-Clone the repo and load it as a local plugin:
+Install directly from GitHub:
+
+```bash
+claude plugin install github:Postman-Devrel/postman-claude-code-plugin
+```
+
+<details>
+<summary>Alternative: load from a local clone</summary>
 
 ```bash
 git clone https://github.com/Postman-Devrel/postman-claude-code-plugin.git
-```
-
-Then start Claude Code with the plugin loaded:
-
-```bash
 cd your-api-project/
 claude --plugin-dir /path/to/postman-claude-code-plugin
 ```
+</details>
 
 ## Quick Start
 
-1. Start Claude Code with the plugin:
+1. Start Claude Code:
 ```bash
-claude --plugin-dir /path/to/postman-claude-code-plugin
+claude
 ```
 
 2. Run setup:
