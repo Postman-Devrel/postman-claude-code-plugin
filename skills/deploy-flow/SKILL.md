@@ -26,7 +26,7 @@ Options:
 
 ## Step 1: Resolve the flow ID
 
-If given a name rather than a 24-char ID, resolve it with the `list-flows` skill (ask which workspace if unknown; disambiguate on multiple matches). (FR-005 dependency)
+If given a name rather than a 24-char ID, resolve it with the `list-flows` skill (ask which workspace if unknown; disambiguate on multiple matches).
 
 ## Step 2: Propose a trigger path and CONFIRM
 
@@ -34,7 +34,7 @@ Deploy **requires** a URL path. Propose a sensible default derived from the flow
 - "Checkout" → `/checkout`
 - "Nightly Report" → `/nightly-report`
 
-Then **confirm the path and the action with the user before deploying** — deploy is a mutating action and MUST NOT run without explicit confirmation. (FR-002, FR-011)
+Then **confirm the path and the action with the user before deploying** — deploy is a mutating action and MUST NOT run without explicit confirmation.
 
 Ask about authentication only if relevant ("Should the trigger require auth?"). Add `--auth` only if they say yes.
 
@@ -52,7 +52,7 @@ Report back:
   ```bash
   POSTMAN_CLI_SOURCE=claude-code-plugin postman flows update 12345-67890-abcdef --trigger on
   ```
-  (enabling is also a state change → confirm first). (FR-002, FR-004)
+  (enabling is also a state change → confirm first).
 
 Example report:
 ```
@@ -63,7 +63,7 @@ Deployed the Checkout flow.
 
 ## Step 4: Hand back to trigger (if part of deploy-then-trigger)
 
-If deploying was requested so the user could run the flow, hand control back to the `trigger-flow` skill to fire it and report the Run ID + status + response — completing the deploy-then-trigger journey in one conversation. (SC-002)
+If deploying was requested so the user could run the flow, hand control back to the `trigger-flow` skill to fire it and report the Run ID + status + response — completing the deploy-then-trigger journey in one conversation.
 
 ---
 
@@ -78,6 +78,6 @@ If deploying was requested so the user could run the flow, hand control back to 
 ## Important Notes (shared authoring baseline)
 
 - **Prefix every CLI call with `POSTMAN_CLI_SOURCE=claude-code-plugin`** for telemetry attribution.
-- **Reuse existing credentials** — no second authentication. (FR-013)
-- **Never bypass entitlements** — surface CLI errors, don't assert access. (FR-014)
-- **Confirm before mutating.** Deploying and enabling a trigger both change state and require explicit user confirmation. (FR-011)
+- **Reuse existing credentials** — no second authentication.
+- **Never bypass entitlements** — surface CLI errors, don't assert access.
+- **Confirm before mutating.** Deploying and enabling a trigger both change state and require explicit user confirmation.

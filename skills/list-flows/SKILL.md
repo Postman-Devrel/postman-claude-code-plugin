@@ -30,7 +30,7 @@ Options:
 
 ## Step 1: Get the workspace ID
 
-A workspace ID is **required**. If you don't have one, ask the user which workspace to look in. Don't fail silently. (FR-005 dependency)
+A workspace ID is **required**. If you don't have one, ask the user which workspace to look in. Don't fail silently.
 
 ## Step 2: List
 
@@ -72,6 +72,6 @@ Two flows match "Checkout" — which one?
 ## Important Notes (shared authoring baseline)
 
 - **Prefix every CLI call with `POSTMAN_CLI_SOURCE=claude-code-plugin`** for telemetry attribution.
-- **Reuse existing credentials** — no second authentication. (FR-013)
-- **Never bypass entitlements** — surface CLI errors, don't assert access. (FR-014)
-- Read-only: listing needs **no** confirmation. (FR-011)
+- **Reuse existing credentials** — no second authentication.
+- **Never bypass entitlements** — surface CLI errors, don't assert access.
+- Read-only: listing needs **no** confirmation.

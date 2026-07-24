@@ -50,7 +50,7 @@ POSTMAN_CLI_SOURCE=claude-code-plugin postman flows get-run --run-id session-abc
 Parse the output and report, rather than dumping raw logs:
 - **which block failed and why** (the failing block + reason)
 - the **run status**
-- **credits consumed** — surface this when the run history exposes it; if it isn't present, say so rather than inventing a number. (FR-008)
+- **credits consumed** — surface this when the run history exposes it; if it isn't present, say so rather than inventing a number.
 
 Example:
 ```
@@ -75,6 +75,6 @@ Suggestion: the upstream API timed out — retry, or raise the request timeout.
 ## Important Notes (shared authoring baseline)
 
 - **Prefix every CLI call with `POSTMAN_CLI_SOURCE=claude-code-plugin`** for telemetry attribution.
-- **Reuse existing credentials** — no second authentication. (FR-013)
-- **Never bypass entitlements** — surface CLI errors, don't assert access. (FR-014)
-- Read-only: inspecting a run needs **no** confirmation. (FR-011)
+- **Reuse existing credentials** — no second authentication.
+- **Never bypass entitlements** — surface CLI errors, don't assert access.
+- Read-only: inspecting a run needs **no** confirmation.

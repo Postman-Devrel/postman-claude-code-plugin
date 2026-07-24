@@ -44,7 +44,7 @@ If the user gave a **name** (e.g. "the Checkout flow"), resolve it to an ID with
 - You need the **workspace ID**. If you don't know it, ask the user which workspace the flow is in.
 - List flows in that workspace and match the name. On a single match, use its ID. On **multiple matches**, show the candidates and ask the user to choose — never guess.
 
-Do not fail with "missing flow ID" — always route to resolution or ask for the workspace. (FR-005)
+Do not fail with "missing flow ID" — always route to resolution or ask for the workspace.
 
 ## Step 2: Build the inputs
 
@@ -82,7 +82,7 @@ If the CLI reports the flow is not deployed (a 404 with a hint like `To deploy i
 1. **Explain** that the flow isn't deployed yet, so it can't be triggered.
 2. **Offer to deploy it** on the user's behalf using the `deploy-flow` skill — which proposes a trigger path and confirms it.
 3. Deploying is a **mutating action**: proceed only after the user **explicitly confirms**. If they decline, do nothing further.
-4. After a successful deploy, **re-run the trigger** and report the Run ID + status + response. (FR-003)
+4. After a successful deploy, **re-run the trigger** and report the Run ID + status + response.
 
 ### Trigger is disabled
 If the CLI reports the trigger/target is disabled:
@@ -91,7 +91,7 @@ If the CLI reports the trigger/target is disabled:
    ```bash
    POSTMAN_CLI_SOURCE=claude-code-plugin postman flows update <flowId> --trigger on
    ```
-3. After enabling (only on confirmation), trigger the flow. (FR-004)
+3. After enabling (only on confirmation), trigger the flow.
 
 ## Step 5: Handle a failing response
 
@@ -104,7 +104,6 @@ Trigger returned 500.
   Response: { "error": "downstream timeout" }
 Want me to inspect the run? I can pull the per-block detail with get-flow-run for session-def456.
 ```
-(FR-006)
 
 ---
 
@@ -119,7 +118,7 @@ Want me to inspect the run? I can pull the per-block detail with get-flow-run fo
 ## Important Notes (shared authoring baseline)
 
 - **Prefix every CLI call with `POSTMAN_CLI_SOURCE=claude-code-plugin`** so flow operations are attributed to this plugin in telemetry. It is harmless if the CLI ignores it.
-- **Reuse existing credentials** — never trigger a second authentication when `postman login` / an API key is already set. (FR-013)
-- **Never bypass entitlements.** Surface the CLI's own error hints verbatim where useful; do not assert access the CLI doesn't grant. (FR-014)
-- **Confirm before mutating.** Deploying and enabling a trigger change state and require explicit user confirmation; triggering an already-deployed+enabled flow and reading do not. (FR-011)
+- **Reuse existing credentials** — never trigger a second authentication when `postman login` / an API key is already set.
+- **Never bypass entitlements.** Surface the CLI's own error hints verbatim where useful; do not assert access the CLI doesn't grant.
+- **Confirm before mutating.** Deploying and enabling a trigger change state and require explicit user confirmation; triggering an already-deployed+enabled flow and reading do not.
 - Always report the **Run ID, HTTP status, and response** on a trigger. Deeper per-block detail is available via `get-flow-run`.
