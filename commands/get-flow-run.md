@@ -1,5 +1,5 @@
 ---
-description: Inspect a Postman Flow run by its Run ID — per-block logs, failing block, status, and credits consumed
+description: Inspect a Postman Flow run by its Run ID — per-block logs, failing block, and status
 allowed-tools: Bash, Read
 ---
 
@@ -17,6 +17,6 @@ Inspect a specific Postman Flow run using the Postman CLI. Follow the `get-flow-
    POSTMAN_CLI_SOURCE=claude-code-plugin postman flows get-run --run-id <runId> --logs
    ```
    Narrow to a block with `--filter <blockId>`.
-3. Report **which block failed and why**, the **run status**, and **credits consumed** when the run history exposes it (say so if it doesn't, rather than inventing a number).
+3. Report **which block failed and why** and the **run status**.
 
 Read-only: no confirmation needed. Prefix CLI calls with `POSTMAN_CLI_SOURCE=claude-code-plugin`. Reuse existing `postman login` credentials.

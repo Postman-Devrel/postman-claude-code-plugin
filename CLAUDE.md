@@ -60,7 +60,7 @@ Several commands use the Postman CLI instead of MCP. They require `postman-cli` 
 - `/postman:list-flows` — List flows in a workspace and resolve a flow name to its 24-char ID via `postman flows list`
 - `/postman:trigger-flow` — Trigger a deployed flow via `postman flows trigger`, with a deploy-then-trigger fallback when the flow isn't deployed
 - `/postman:deploy-flow` — Deploy a flow to make it triggerable via `postman flows deploy` (proposes and confirms a trigger path first)
-- `/postman:get-flow-run` — Inspect a run by Run ID via `postman flows get-run` (per-block logs, failing block, status, credits)
+- `/postman:get-flow-run` — Inspect a run by Run ID via `postman flows get-run` (per-block logs, failing block, status)
 
 CLI commands work with Postman's git sync structure: `postman/collections/` (v3 folder format), `postman/environments/`, `postman/specs/`, and `.postman/resources.yaml` for cloud ID mapping.
 

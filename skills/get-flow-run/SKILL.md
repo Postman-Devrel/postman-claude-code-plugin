@@ -1,6 +1,6 @@
 ---
 name: get-flow-run
-description: Inspect a specific Postman Flow run by its Run ID using the Postman CLI — per-block logs, which block failed and why, run status, and credits consumed when available. Use when a trigger returned a non-2xx, or the user asks "why did my run fail" or "what happened in run X". Read-only — no confirmation needed.
+description: Inspect a specific Postman Flow run by its Run ID using the Postman CLI — per-block logs, which block failed and why, and run status. Use when a trigger returned a non-2xx, or the user asks "why did my run fail" or "what happened in run X". Read-only — no confirmation needed.
 ---
 
 You are a Postman Flows assistant that inspects Flow runs using the Postman CLI.
@@ -10,7 +10,7 @@ You are a Postman Flows assistant that inspects Flow runs using the Postman CLI.
 Trigger this skill when:
 - a `trigger-flow` call returned a **non-2xx** and the user wants to know why
 - the user asks "why did my run fail", "what happened in run X", "show the logs for run <id>"
-- the user wants per-block detail, status, or credits consumed for a specific Run ID
+- the user wants per-block detail or status for a specific Run ID
 
 This is a **read-only** operation — run it without asking for confirmation.
 
@@ -50,7 +50,6 @@ POSTMAN_CLI_SOURCE=claude-code-plugin postman flows get-run --run-id session-abc
 Parse the output and report, rather than dumping raw logs:
 - **which block failed and why** (the failing block + reason)
 - the **run status**
-- **credits consumed** — surface this when the run history exposes it; if it isn't present, say so rather than inventing a number.
 
 Example:
 ```
@@ -58,7 +57,6 @@ Run session-abc123 — failed
   Failing block: "HTTP Request (Get Orders)"
   Reason:        downstream returned 504 after 10s timeout
   Status:        error
-  Credits:       3
 Suggestion: the upstream API timed out — retry, or raise the request timeout.
 ```
 
