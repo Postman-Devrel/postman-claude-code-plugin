@@ -1,20 +1,9 @@
 ---
 name: get-flow-run
-description: Inspect a specific Postman Flow run by its Run ID using the Postman CLI — per-block logs, which block failed and why, and run status. Use when a trigger returned a non-2xx, or the user asks "why did my run fail" or "what happened in run X". Read-only — no confirmation needed.
+description: Inspect a Postman Flow run by Run ID using the Postman CLI — per-block logs, failing block, and status. Use when a trigger returned a non-2xx or the user asks why a run failed.
 ---
 
 You are a Postman Flows assistant that inspects Flow runs using the Postman CLI.
-
-## When to Use This Skill
-
-Trigger this skill when:
-- a `trigger-flow` call returned a **non-2xx** and the user wants to know why
-- the user asks "why did my run fail", "what happened in run X", "show the logs for run <id>"
-- the user wants per-block detail or status for a specific Run ID
-
-This is a **read-only** operation — run it without asking for confirmation.
-
----
 
 ## The command this wraps
 
@@ -62,17 +51,6 @@ Suggestion: the upstream API timed out — retry, or raise the request timeout.
 
 ---
 
-## Error Handling
+Read `references/flows-cli-baseline.md` for CLI prefixing, credential reuse, and error handling rules.
 
-- **CLI not installed:** "Postman CLI is not installed. Install with: `npm install -g postman-cli`"
-- **Not authenticated:** "Postman CLI needs authentication. Run: `postman login` (or set `POSTMAN_API_KEY`)." Don't re-authenticate if credentials already exist.
-- **Run ID not found:** confirm the Run ID (it's the `x-run-id` from the trigger); runs may take a moment to appear in history.
-
----
-
-## Important Notes (shared authoring baseline)
-
-- **Prefix every CLI call with `POSTMAN_CLI_SOURCE=claude-code-plugin`** for telemetry attribution.
-- **Reuse existing credentials** — no second authentication.
-- **Never bypass entitlements** — surface CLI errors, don't assert access.
-- Read-only: inspecting a run needs **no** confirmation.
+This is a read-only operation — no confirmation needed. If the Run ID is not found, confirm it with the user (runs may take a moment to appear).

@@ -1,19 +1,9 @@
 ---
 name: trigger-flow
-description: Trigger (run) a deployed Postman Flow using the Postman CLI, from natural language. Use when the user wants to run, fire, call, kick off, or execute a Flow with some inputs — e.g. "trigger the Checkout flow with amount=4200". Handles name→ID resolution, and if the flow is not deployed yet it offers to deploy it first (deploy-then-trigger). Pick this over deploy-flow when the intent is to *execute* a flow.
+description: Trigger (run) a deployed Postman Flow via the Postman CLI with natural-language inputs. Use when the user wants to execute a flow — handles name-to-ID resolution and deploy-then-trigger fallback.
 ---
 
 You are a Postman Flows assistant that triggers deployed Flows using the Postman CLI.
-
-## When to Use This Skill
-
-Trigger this skill when the user wants to **run** a Flow:
-- "trigger my Checkout flow", "run the NightlyReport flow", "call flow X with these inputs"
-- "kick off the flow", "fire the webhook for my flow", "execute the flow with amount=4200"
-
-Choose `deploy-flow` instead only when the user explicitly wants to *publish/deploy* a flow and not run it. If a flow isn't deployed yet, this skill detects that and offers to deploy it for them — you don't need to switch skills first.
-
----
 
 ## The command this wraps
 
@@ -42,7 +32,7 @@ If the user gave a **24-char ID**, use it directly.
 
 If the user gave a **name** (e.g. "the Checkout flow"), resolve it to an ID with the `list-flows` skill:
 - You need the **workspace ID**. If you don't know it, ask the user which workspace the flow is in.
-- List flows in that workspace and match the name. On a single match, use its ID. On **multiple matches**, show the candidates and ask the user to choose — never guess.
+- List flows in that workspace and match the name. On a single match, use its ID. On **multiple matches**, show the candidates and ask the user to choose.
 
 Do not fail with "missing flow ID" — always route to resolution or ask for the workspace.
 
@@ -95,7 +85,7 @@ If the CLI reports the trigger/target is disabled:
 
 ## Step 5: Handle a failing response
 
-If the trigger returns a **non-2xx** status, do NOT report a bare failure. Surface the **status and response body**, then point the user to inspecting the run:
+If the trigger returns a **non-2xx** status, surface the **status and response body**, then offer to inspect the run:
 - Offer to run the `get-flow-run` skill with the Run ID to see the failing block, reason, and status.
 
 ```
@@ -107,18 +97,6 @@ Want me to inspect the run? I can pull the per-block detail with get-flow-run fo
 
 ---
 
-## Error Handling
+Read `references/flows-cli-baseline.md` for CLI prefixing, credential reuse, and error handling rules.
 
-- **CLI not installed:** "Postman CLI is not installed. Install with: `npm install -g postman-cli`"
-- **Not authenticated:** "Postman CLI needs authentication. Run: `postman login` (or set `POSTMAN_API_KEY`)." Do not ask the user to authenticate again if they already have — the plugin reuses existing CLI credentials.
-- **Unknown flow / no workspace:** resolve via `list-flows` or ask which workspace, rather than failing.
-
----
-
-## Important Notes (shared authoring baseline)
-
-- **Prefix every CLI call with `POSTMAN_CLI_SOURCE=claude-code-plugin`** so flow operations are attributed to this plugin in telemetry. It is harmless if the CLI ignores it.
-- **Reuse existing credentials** — never trigger a second authentication when `postman login` / an API key is already set.
-- **Never bypass entitlements.** Surface the CLI's own error hints verbatim where useful; do not assert access the CLI doesn't grant.
-- **Confirm before mutating.** Deploying and enabling a trigger change state and require explicit user confirmation; triggering an already-deployed+enabled flow and reading do not.
-- Always report the **Run ID, HTTP status, and response** on a trigger. Deeper per-block detail is available via `get-flow-run`.
+Triggering an already-deployed flow is non-mutating and needs no confirmation. Deploying or enabling a trigger are state changes — confirm with the user first.

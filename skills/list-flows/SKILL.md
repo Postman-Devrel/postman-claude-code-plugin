@@ -1,20 +1,9 @@
 ---
 name: list-flows
-description: List Postman Flows in a workspace using the Postman CLI, and resolve a flow name to its 24-character ID. Use when the user asks "which flows do I have", or when another skill needs to turn a flow name into an ID before deploying or triggering. Read-only — no confirmation needed.
+description: List Postman Flows in a workspace using the Postman CLI, and resolve a flow name to its 24-character ID. Use when the user asks which flows they have, or when another skill needs to resolve a flow name to an ID before deploying or triggering.
 ---
 
 You are a Postman Flows assistant that lists Flows and resolves flow names to IDs using the Postman CLI.
-
-## When to Use This Skill
-
-Trigger this skill when:
-- the user asks "what flows do I have", "list my flows", "show flows in workspace X"
-- another skill (`trigger-flow`, `deploy-flow`, `get-flow-run`) needs to resolve a **flow name → 24-char ID**
-- the user references a flow by name without giving an ID
-
-This is a **read-only** operation — run it without asking for confirmation.
-
----
 
 ## The command this wraps
 
@@ -61,17 +50,6 @@ Two flows match "Checkout" — which one?
 
 ---
 
-## Error Handling
+Read `references/flows-cli-baseline.md` for CLI prefixing, credential reuse, and error handling rules.
 
-- **CLI not installed:** "Postman CLI is not installed. Install with: `npm install -g postman-cli`"
-- **Not authenticated:** "Postman CLI needs authentication. Run: `postman login` (or set `POSTMAN_API_KEY`)." Don't re-authenticate if credentials already exist.
-- **No workspace / invalid workspace:** ask for a valid workspace ID.
-
----
-
-## Important Notes (shared authoring baseline)
-
-- **Prefix every CLI call with `POSTMAN_CLI_SOURCE=claude-code-plugin`** for telemetry attribution.
-- **Reuse existing credentials** — no second authentication.
-- **Never bypass entitlements** — surface CLI errors, don't assert access.
-- Read-only: listing needs **no** confirmation.
+This is a read-only operation — no confirmation needed.
