@@ -47,7 +47,7 @@ is cut by tagging the matching `vX.Y.Z` (see [Releasing](#releasing)).
 
 - Redundant tooling.
 
-## [1.0.0]
+## [1.0.0] - 2026-02-02
 
 ### Added
 
@@ -65,8 +65,8 @@ Releases are automated by `.github/workflows/release.yml`. To cut a release:
 4. Tag the commit and push the tag:
 
    ```bash
-   git tag v1.3.0
-   git push origin v1.3.0
+   git tag vX.Y.Z
+   git push origin vX.Y.Z
    ```
 
 The workflow verifies the tag matches `plugin.json`, extracts the matching
