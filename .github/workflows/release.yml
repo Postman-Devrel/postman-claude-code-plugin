@@ -1,0 +1,52 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Publish Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify tag matches plugin.json version
+        run: |
+          TAG="${GITHUB_REF_NAME#v}"
+          PLUGIN_VERSION=$(python -c "import json; print(json.load(open('.claude-plugin/plugin.json'))['version'])")
+          echo "Tag version:    $TAG"
+          echo "plugin.json:    $PLUGIN_VERSION"
+          if [ "$TAG" != "$PLUGIN_VERSION" ]; then
+            echo "::error::Tag v$TAG does not match plugin.json version $PLUGIN_VERSION. Bump plugin.json before tagging."
+            exit 1
+          fi
+
+      - name: Extract release notes from CHANGELOG
+        id: notes
+        run: |
+          TAG="${GITHUB_REF_NAME#v}"
+          # Print the body of the "## [X.Y.Z]" section, stopping at the next "## " heading.
+          awk -v ver="$TAG" '
+            $0 ~ "^## \\[" ver "\\]" { grab=1; next }
+            grab && /^## / { exit }
+            grab { print }
+          ' CHANGELOG.md > release-notes.md
+          if [ ! -s release-notes.md ]; then
+            echo "::error::No CHANGELOG section found for version $TAG. Add a '## [$TAG]' entry."
+            exit 1
+          fi
+          echo "Release notes:"
+          cat release-notes.md
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            --title "$GITHUB_REF_NAME" \
+            --notes-file release-notes.md

@@ -73,7 +73,7 @@ def main():
         errors.append("agents/: Directory not found")
 
     # 6. Check for stray markdown files in root (not README, CLAUDE, LICENSE, or examples)
-    expected_root_md = {"README.md", "CLAUDE.md", "LICENSE", "token-optimization-findings.md"}
+    expected_root_md = {"README.md", "CLAUDE.md", "CHANGELOG.md", "LICENSE", "token-optimization-findings.md"}
     for f in sorted(root.glob("*.md")):
         if f.name not in expected_root_md:
             errors.append(f"{f.name}: Unexpected markdown file in repo root")
