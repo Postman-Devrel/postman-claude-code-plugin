@@ -11,8 +11,8 @@ The Postman Plugin for Claude Code — a pure-markdown, configuration-driven plu
 ```
 .claude-plugin/plugin.json   # Plugin manifest (name, version, metadata)
 .mcp.json                    # MCP server auto-config (Postman MCP at mcp.postman.com)
-commands/*.md                # 11 slash commands (/postman:<name>)
-skills/*/SKILL.md            # 7 skills (knowledge, agent-ready APIs, CLI, send-request, generate-spec, run-collection, context)
+commands/*.md                # 15 slash commands (/postman:<name>)
+skills/*/SKILL.md            # 11 skills (knowledge, agent-ready APIs, CLI, send-request, generate-spec, run-collection, context, and Flows: list-flows, trigger-flow, deploy-flow, get-flow-run)
 skills/*/references/*.md     # On-demand reference files loaded by skills only when needed
 agents/readiness-analyzer.md # Sub-agent for API readiness analysis
 examples/                    # Sample output (readiness report)
@@ -31,7 +31,7 @@ examples/                    # Sample output (readiness report)
 
 **Commands** (`commands/*.md`): YAML front matter with `description` and `allowed-tools`. Each defines a structured workflow invoked as `/postman:<name>`.
 - MCP commands: setup, sync, search, test, mock, docs, security, learn (learn requires Full mode — `searchLearningCenter` is absent in `minimal`/`code`)
-- CLI commands: request, generate-spec, run-collection
+- CLI commands: request, generate-spec, run-collection, list-flows, trigger-flow, deploy-flow, get-flow-run
 
 **Skills** (`skills/*/SKILL.md`): YAML front matter with `name`, `description`, `user-invocable`. Auto-injected context, not directly invoked. `postman-knowledge` provides MCP tool guidance; `agent-ready-apis` provides readiness criteria; `postman-cli` provides CLI and git sync file structure knowledge; `postman-context` provides API discovery, exploration, and code generation from real API definitions.
 
@@ -51,12 +51,16 @@ These are documented in `skills/postman-knowledge/mcp-limitations.md` and must b
 
 ## Postman CLI Commands
 
-Three commands use the Postman CLI instead of MCP. They require `postman-cli` installed locally (`npm install -g postman-cli`) and authenticated (`postman login`). If CLI is not found, show install instructions and stop.
+Several commands use the Postman CLI instead of MCP. They require `postman-cli` installed locally (`npm install -g postman-cli`) and authenticated (`postman login`). If CLI is not found, show install instructions and stop.
 
 - `/postman:request` — Send HTTP requests via `postman request <METHOD> <URL>`
 - `/postman:generate-spec` — Scan code for API routes, generate OpenAPI 3.0 YAML, validate with `postman spec lint`
 - `/postman:run-collection` — Run collection tests via `postman collection run <id>` using cloud IDs from `.postman/resources.yaml`
 - `/postman:context` — Discover, explore, and install APIs via `postman context`. Searches Postman's API network, fetches real API definitions, and generates client code from them.
+- `/postman:list-flows` — List flows in a workspace and resolve a flow name to its 24-char ID via `postman flows list`
+- `/postman:trigger-flow` — Trigger a deployed flow via `postman flows trigger`, with a deploy-then-trigger fallback when the flow isn't deployed
+- `/postman:deploy-flow` — Deploy a flow to make it triggerable via `postman flows deploy` (proposes and confirms a trigger path first)
+- `/postman:get-flow-run` — Inspect a run by Run ID via `postman flows get-run` (per-block logs, failing block, status)
 
 CLI commands work with Postman's git sync structure: `postman/collections/` (v3 folder format), `postman/environments/`, `postman/specs/`, and `.postman/resources.yaml` for cloud ID mapping.
 
