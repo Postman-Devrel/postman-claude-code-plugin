@@ -13,11 +13,27 @@ The Postman Plugin provides a single, simple install for Claude Code. It provide
 
 ## Installation
 
-Install directly from GitHub:
+Install from Anthropic's official plugin marketplace.
+
+In Claude Code:
+
+```
+/plugin install postman@claude-plugins-official
+```
+
+Or from the terminal:
+
+```bash
+claude plugin install postman@claude-plugins-official
+```
+
+<details>
+<summary>Alternative: install from GitHub</summary>
 
 ```bash
 claude plugin install github:Postman-Devrel/postman-claude-code-plugin
 ```
+</details>
 
 <details>
 <summary>Alternative: load from a local clone</summary>

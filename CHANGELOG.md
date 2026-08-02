@@ -10,6 +10,20 @@ is cut by tagging the matching `vX.Y.Z` (see [Releasing](#releasing)).
 
 ## [Unreleased]
 
+## [1.3.1] - 2026-08-02
+
+### Changed
+
+- README now recommends installing from Anthropic's official plugin marketplace
+  (`/plugin install postman@claude-plugins-official`), with GitHub and local-clone
+  installs moved to collapsible alternatives.
+
+### Fixed
+
+- Bumped the `X-Plugin-Version` and `User-Agent` headers in `.mcp.json` to match
+  `plugin.json` (they had drifted to `1.2.0`). The release workflow now fails if
+  these versions ever fall out of sync again.
+
 ## [1.3.0] - 2026-07-20
 
 ### Added
