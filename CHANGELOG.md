@@ -20,6 +20,12 @@ is cut by tagging the matching `vX.Y.Z` (see [Releasing](#releasing)).
   mode, OAuth); `use-local` points it at the local stdio package
   (`npx @postman/postman-mcp-server@latest`, which requires `POSTMAN_API_KEY`).
   Added for cross-plugin command parity with the Cursor and Antigravity plugins.
+- `/postman:generate-client` command — generates typed client code from a
+  Postman collection. This is the inverse of `/postman:generate-spec` (which
+  authors an OpenAPI spec from code). Reads the collection through the MCP
+  codegen tools and writes a production-ready client matching the project's
+  language and conventions. Requires Full or Code MCP mode (this plugin
+  defaults to Full).
 
 ## [1.3.0] - 2026-07-20
 
