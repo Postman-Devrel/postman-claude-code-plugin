@@ -62,6 +62,9 @@ That's it. The plugin auto-configures the Postman MCP Server, verifies your conn
 | `/postman:docs` | Generate, improve, and publish API documentation |
 | `/postman:security` | Security audit against OWASP API Top 10 |
 | `/postman:learn` | Search the Postman Learning Center for how-to guidance and suggested workflows (Full mode) |
+| `/postman:generate-client` | Generate typed client code from a Postman collection (Full or Code mode) |
+| `/postman:use-remote` | Switch the plugin to the hosted MCP Server (`mcp.postman.com`, Full mode, OAuth) |
+| `/postman:use-local` | Switch the plugin to the local stdio MCP Server (`npx @postman/postman-mcp-server`, needs `POSTMAN_API_KEY`) |
 
 ## What You Can Do
 

@@ -10,6 +10,23 @@ is cut by tagging the matching `vX.Y.Z` (see [Releasing](#releasing)).
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-08-02
+
+### Added
+
+- `/postman:use-local` and `/postman:use-remote` commands — toggle which Postman
+  MCP Server this plugin talks to by rewriting the bundled `.mcp.json` in place.
+  `use-remote` points it at the hosted server (`https://mcp.postman.com/mcp`, Full
+  mode, OAuth); `use-local` points it at the local stdio package
+  (`npx @postman/postman-mcp-server@latest`, which requires `POSTMAN_API_KEY`).
+  Added for cross-plugin command parity with the Cursor and Antigravity plugins.
+- `/postman:generate-client` command — generates typed client code from a
+  Postman collection. This is the inverse of `/postman:generate-spec` (which
+  authors an OpenAPI spec from code). Reads the collection through the MCP
+  codegen tools and writes a production-ready client matching the project's
+  language and conventions. Requires Full or Code MCP mode (this plugin
+  defaults to Full).
+
 ## [1.3.0] - 2026-07-20
 
 ### Added
@@ -72,7 +89,8 @@ Releases are automated by `.github/workflows/release.yml`. To cut a release:
 The workflow verifies the tag matches `plugin.json`, extracts the matching
 CHANGELOG section, and publishes a GitHub Release with those notes.
 
-[Unreleased]: https://github.com/Postman-Devrel/postman-claude-code-plugin/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/Postman-Devrel/postman-claude-code-plugin/compare/v1.4.0...HEAD
+[1.4.0]: https://github.com/Postman-Devrel/postman-claude-code-plugin/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/Postman-Devrel/postman-claude-code-plugin/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/Postman-Devrel/postman-claude-code-plugin/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/Postman-Devrel/postman-claude-code-plugin/compare/v1.0.0...v1.1.0
