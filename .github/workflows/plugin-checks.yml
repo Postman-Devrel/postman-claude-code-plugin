@@ -57,3 +57,24 @@ jobs:
         with:
           python-version: "3.12"
       - run: python .github/scripts/validate-structure.py
+
+  version-sync:
+    name: Version Sync
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify .mcp.json version matches plugin.json version
+        run: |
+          PLUGIN_VERSION=$(python -c "import json; print(json.load(open('.claude-plugin/plugin.json'))['version'])")
+          MCP_PLUGIN_VERSION=$(python -c "import json; print(json.load(open('.mcp.json'))['mcpServers']['postman']['headers']['X-Plugin-Version'])")
+          MCP_USER_AGENT=$(python -c "import json; print(json.load(open('.mcp.json'))['mcpServers']['postman']['headers']['User-Agent'])")
+          echo "plugin.json:                $PLUGIN_VERSION"
+          echo ".mcp.json X-Plugin-Version: $MCP_PLUGIN_VERSION"
+          echo ".mcp.json User-Agent:       $MCP_USER_AGENT"
+          if [ "$MCP_PLUGIN_VERSION" != "$PLUGIN_VERSION" ] || [ "$MCP_USER_AGENT" != "postman-claude-code-plugin/$PLUGIN_VERSION" ]; then
+            echo "::error::.mcp.json version headers do not match plugin.json version $PLUGIN_VERSION. Update X-Plugin-Version and User-Agent in .mcp.json to match plugin.json."
+            exit 1
+          fi
