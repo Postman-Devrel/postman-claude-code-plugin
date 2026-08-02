@@ -1,0 +1,13 @@
+# Code owners / default PR reviewers.
+#
+# GitHub auto-requests these reviewers when a pull request is opened as — or
+# marked — "ready for review". Draft PRs do not trigger a request.
+#
+# These are the individual members of the @postman-eng/postman-api team. The
+# team itself cannot be referenced here: CODEOWNERS only supports teams that
+# belong to the same org as the repo (Postman-Devrel), and postman-api lives in
+# the postman-eng org. Keep this list in sync with that team manually.
+#
+# NOTE: Each user must have at least read access to this repo, otherwise GitHub
+# silently skips them as a code owner.
+* @akira28 @garciasdos @christosgkoros @shruti-paranjape @alexander-rubia @rubenbaraut
