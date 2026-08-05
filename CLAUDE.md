@@ -78,5 +78,6 @@ CLI commands work with Postman's git sync structure: `postman/collections/` (v3 
 
 - The plugin follows [Semantic Versioning](https://semver.org). `version` in `.claude-plugin/plugin.json` is the single source of truth
 - Every user-facing change bumps the version and adds an entry under `## [Unreleased]` in `CHANGELOG.md` (added a command/skill → minor; fix/tweak → patch; breaking change → major)
-- To release: bump `plugin.json`, move `[Unreleased]` notes into a dated `## [X.Y.Z]` section, merge to `main`, then `git tag vX.Y.Z && git push origin vX.Y.Z`
-- The `Release` GitHub Actions workflow (`.github/workflows/release.yml`) triggers on `v*` tags: it fails if the tag doesn't match `plugin.json`, extracts the matching CHANGELOG section, and publishes a GitHub Release with those notes
+- When bumping `plugin.json`, also update the `X-Plugin-Version` and `User-Agent` headers in `.mcp.json` to the same version — these are sent to the Postman MCP Server for telemetry and must stay in sync
+- To release: bump `plugin.json` and the matching `.mcp.json` version headers, move `[Unreleased]` notes into a dated `## [X.Y.Z]` section, merge to `main`, then `git tag vX.Y.Z && git push origin vX.Y.Z`
+- The `Release` GitHub Actions workflow (`.github/workflows/release.yml`) triggers on `v*` tags: it fails if the tag doesn't match `plugin.json` or if `.mcp.json`'s version headers don't match `plugin.json`, extracts the matching CHANGELOG section, and publishes a GitHub Release with those notes
