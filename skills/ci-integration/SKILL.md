@@ -51,11 +51,28 @@ anything new.
 entity with no local counterpart — genuinely destructive, and not the
 default for a reason. See Critical Rules before adding it to a merge job.
 
+## AI readiness threshold
+
+`collection ai-readiness <path> --min-score <n>` and its spec-side
+counterpart `spec ai-readiness <path> --min-score <n>` (see `ai-readiness`
+skill) are a fourth, separate gate — they score AI-agent consumability, not
+test results or governance/structural style. Keep either in its own step:
+folding it into the same step as `run` or one of the `lint` verbs above
+hides which kind of check actually failed when the job goes red. Pick the
+verb that matches what's checked into the repo — `collection ai-readiness`
+for a git-synced collection, `spec ai-readiness` for an OpenAPI spec with no
+collection generated from it yet.
+
+```yaml
+- run: postman collection ai-readiness ./postman/collections/My\ API --min-score 70
+```
+
 ## Critical Rules
 
-1. **Never collapse `run` and `lint` into one step, and never pass
-   `-x`/`--suppress-exit-code` to a CI run.** One combined exit code hides
-   which check broke; a suppressed one hides that anything broke at all.
+1. **Never collapse `run`, `lint`, and `ai-readiness` into one step, and
+   never pass `-x`/`--suppress-exit-code` to a CI run.** One combined exit
+   code hides which check broke; a suppressed one hides that anything broke
+   at all.
 2. **Gate `workspace push` to the merge event, never a PR event.** Everything
    else in this skill is read-only against the cloud; this is the one
    command that writes to it, so a PR-triggered push ships an unmerged
@@ -87,17 +104,18 @@ default for a reason. See Critical Rules before adding it to a merge job.
 ## Verification
 
 State each gate that ran and its individual result — not "CI passed," but
-which check ran, what it checked (governance vs. structure, per the Lint
-table above), and its exit code. If `workspace push` ran, confirm it was
-triggered by the merge event and not a PR event, state which push strategy
-was used, and report `Created`/`Updated` per entity rather than just "push
-succeeded." Confirm no secret value appears literally in the committed
-workflow file.
+which check ran, what it checked (governance vs. structure per the Lint
+table above, or AI-agent consumability for `ai-readiness`), and its exit
+code. If `workspace push` ran, confirm it was triggered by the merge event
+and not a PR event, state which push strategy was used, and report
+`Created`/`Updated` per entity rather than just "push succeeded." Confirm
+no secret value appears literally in the committed workflow file.
 
 ## Reference
 
 - `api-testing` skill — `collection run`'s exit-code semantics and reporter
   flags in full.
-- `spec-authoring` skill — `spec lint` and governance rulesets.
 - `collection-schema-v3` skill — what `workspace push` is actually pushing.
 - `bootstrap` skill — CLI resolution, workspace linking, `.postman/resources.yaml`.
+- `ai-readiness` skill — `collection ai-readiness`, `spec ai-readiness`, and
+  their `--min-score` gate.
