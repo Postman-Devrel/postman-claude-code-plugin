@@ -39,7 +39,8 @@ def validate_commands(root: Path) -> list[str]:
     errors = []
     commands_dir = root / "commands"
     if not commands_dir.is_dir():
-        return [f"{commands_dir}: Directory not found"]
+        # commands/ is optional — a plugin may be skill-only
+        return errors
 
     for f in sorted(commands_dir.glob("*.md")):
         text = f.read_text()
@@ -88,7 +89,8 @@ def validate_agents(root: Path) -> list[str]:
     errors = []
     agents_dir = root / "agents"
     if not agents_dir.is_dir():
-        return [f"{agents_dir}: Directory not found"]
+        # agents/ is optional — a plugin may be skill-only
+        return errors
 
     required_fields = ["name", "description", "model", "allowed-tools"]
 
