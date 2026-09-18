@@ -1,5 +1,5 @@
 ---
-name: api-flows
+name: flows
 description: Runs, deploys, and debugs Postman Flows from the command line — executing a flow file locally, triggering a deployed flow over its webhook, deploying one so it becomes callable, and tracing a failed run to the block that broke. Use when the user names a flow and an action ("run the Checkout flow", "deploy this flow", "why did that flow run fail", "what flows do I have"). Covers `postman flows list`, `run`, `trigger`, `deploy`, `update`, `list-runs`, and `get-run`.
 ---
 
