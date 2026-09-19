@@ -33,17 +33,14 @@ def main():
     if not mcp_json.exists():
         errors.append(".mcp.json: File not found")
 
-    # 3. Every commands/*.md must have frontmatter
+    # 3. commands/ is optional (a plugin may be skill-only); if present, every
+    # commands/*.md must have frontmatter
     commands_dir = root / "commands"
     if commands_dir.is_dir():
         command_files = sorted(commands_dir.glob("*.md"))
-        if not command_files:
-            errors.append("commands/: No command files found")
         for f in command_files:
             if not has_frontmatter(f):
                 errors.append(f"commands/{f.name}: Missing YAML frontmatter")
-    else:
-        errors.append("commands/: Directory not found")
 
     # 4. Every skills/*/ directory must have a SKILL.md
     skills_dir = root / "skills"
@@ -60,17 +57,13 @@ def main():
     else:
         errors.append("skills/: Directory not found")
 
-    # 5. Every agents/*.md must have frontmatter
+    # 5. agents/ is optional (a plugin may be skill-only); if present, every
+    # agents/*.md must have frontmatter
     agents_dir = root / "agents"
     if agents_dir.is_dir():
-        agent_files = sorted(agents_dir.glob("*.md"))
-        if not agent_files:
-            errors.append("agents/: No agent files found")
-        for f in agent_files:
+        for f in sorted(agents_dir.glob("*.md")):
             if not has_frontmatter(f):
                 errors.append(f"agents/{f.name}: Missing YAML frontmatter")
-    else:
-        errors.append("agents/: Directory not found")
 
     # 6. Check for stray markdown files in root (not README, CLAUDE, LICENSE, or examples)
     expected_root_md = {"README.md", "CLAUDE.md", "CHANGELOG.md", "LICENSE", "token-optimization-findings.md"}
