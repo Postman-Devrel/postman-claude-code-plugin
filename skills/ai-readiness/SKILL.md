@@ -17,8 +17,6 @@ Two ways to run this check, same rubric family, different target — pick by wha
 - `spec ai-readiness <spec>` scores an OpenAPI specification directly — by
   cloud ID or local file path — with no collection involved at all.
 
-
-
 ## Scoring
 
 The command computes and prints the score itself — read the fields it
