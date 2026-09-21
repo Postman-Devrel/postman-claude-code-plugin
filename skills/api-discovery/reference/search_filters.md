@@ -53,7 +53,6 @@ first to find them.
 ## Element-specific fields
 
 **`requests`**
-
 | Field | Operators | Value |
 | --- | --- | --- |
 | `collectionId` | `$eq`, `$ne`, `$in`, `$nin` | id |
@@ -62,7 +61,6 @@ first to find them.
 | `type` | `$eq`, `$ne`, `$in`, `$nin` | `http-request`, `graphql-request`, `grpc-request`, `ws-raw-request`, `ws-socketio-request`, `mqtt-request`, `llm-request` |
 
 **`specs`**
-
 | Field | Operators | Value |
 | --- | --- | --- |
 | `specificationId` | `$eq`, `$ne`, `$in`, `$nin` | id |
