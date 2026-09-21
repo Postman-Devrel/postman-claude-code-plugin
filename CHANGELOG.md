@@ -10,6 +10,20 @@ is cut by tagging the matching `vX.Y.Z` (see [Releasing](#releasing)).
 
 ## [Unreleased]
 
+### Added
+
+- `api-documentation` and `api-engineer` skills, ported from postmanlabs/postman-plugin.
+  `api-engineer` is a default entry point for API engineering work that routes to the
+  other skills; `api-documentation` generates filesystem-first, agent-friendly API docs.
+- `hooks/hooks.json` with a `SessionStart` hook that injects `hooks/session-start-context.md`,
+  directing Claude to invoke `postman:api-engineer` for non-trivial API engineering tasks.
+
+### Changed
+
+- Synced `ai-readiness`, `api-discovery` (search filters reference), and `bootstrap`
+  skills to match their postmanlabs/postman-plugin source (whitespace/heading-level only,
+  no behavior change).
+
 ## [1.3.1] - 2026-08-02
 
 ### Changed
