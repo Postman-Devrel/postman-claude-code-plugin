@@ -56,7 +56,7 @@ pick from what it prints.
 
 ---
 
-# Process
+## Process
 
 Three steps, in order. Stop at the first that fails and report which one.
 
@@ -208,7 +208,7 @@ written but the requested workspace was not created — it does *not* mean re-ru
 
 ---
 
-# Reference Files
+## Reference Files
 
 - `collection-schema-v3` skill — read when inspecting or writing the
   collection files this skill resolves.

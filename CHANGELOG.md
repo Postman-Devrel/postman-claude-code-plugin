@@ -23,6 +23,12 @@ is cut by tagging the matching `vX.Y.Z` (see [Releasing](#releasing)).
 - Synced `ai-readiness`, `api-discovery` (search filters reference), and `bootstrap`
   skills to match their postmanlabs/postman-plugin source (whitespace/heading-level only,
   no behavior change).
+- Synced `skills/` from postmanlabs/postman-plugin@4090901: `api-discovery` adds Orbit
+  public-API discovery (new `reference/orbit.md`) and drops `reference/search_filters.md`;
+  `bootstrap` now inspects the local and cloud workspace before choosing pull, push or init;
+  `collection-schema-v3` adds an environment schema reference; `api-mocking`,
+  `api-monitoring`, `api-testing`, `api-engineer`, `ai-readiness` and `postman-mcp-server`
+  get content updates.
 
 ## [1.3.1] - 2026-08-02
 
