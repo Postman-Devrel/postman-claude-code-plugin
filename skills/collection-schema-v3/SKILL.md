@@ -96,12 +96,12 @@ Saved examples are what `collection ai-readiness` checks for — a request
 with no examples scores worse for agent consumption even if perfectly
 valid structurally.
 
-## Environments (`postman/environments/*.yaml`)
+## Environments (`postman/environments/*.environment.yaml`)
 
-- `name` — required.
-- `values` — array of `{key, value: string, enabled, type}`. `value` must
-  be a string (same rule as collection variables); `enabled` is boolean;
-  `type` is a string, e.g. `"default"`.
+Environment files are v3 YAML but are not collection entities: they do not use
+`$kind`. Before creating or editing one by hand, read
+[reference/environment.md](reference/environment.md) for the schema, secret
+handling, CLI-first edit commands, and a linted example.
 
 ## YAML rules
 
@@ -206,3 +206,5 @@ variables:
 
 - [Other request protocols](reference/other_protocols.md) — GraphQL, gRPC,
   WebSocket, Socket.IO, MQTT, MCP, and LLM request schemas.
+- [Environment schema](reference/environment.md) — v3 environment filenames,
+  fields, variable types, safe editing commands, and validation.

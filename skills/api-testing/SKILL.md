@@ -11,7 +11,8 @@ Three tools, matched to what already exists:
 
 | Have | Use |
 | --- | --- |
-| Just a URL to check | `postman request` |
+| Just a URL to check, with no saved request | `postman request` |
+| A request already saved in a collection | `postman collection run <collection-path> -i <request-id-name-or-path>` |
 | A collection with `pm.test` assertions saved in it | `postman collection run` |
 | A real app (browser flow, CLI, service) whose traffic should match a collection's contract | `postman application test` |
 
@@ -30,6 +31,21 @@ code counts *failed assertions*, not just HTTP status, so a 200 with a
 failing test still exits nonzero. Useful for a quick check or a CI health
 check; not the place to accumulate assertions that should outlive one
 command — those belong saved in a collection.
+
+Before constructing a URL, headers, auth, and body on the command line, look
+for a matching `*.request.yaml` under `postman/collections/`. If it exists,
+execute the saved request through its collection:
+
+```bash
+postman collection run "postman/collections/Orders API" -i "create order"
+```
+
+Do not copy the saved YAML fields into `postman request`; that bypasses the
+collection's inherited variables, auth, scripts, and maintained payload. The
+`postman request` positional target is a URL, not a `.request.yaml` path. When
+there is no saved request but its body already lives in a separate file, keep
+the file as the source of truth with `--body @path/to/payload.json` instead of
+inlining its contents.
 
 ## `collection run` — the assertion suite
 
@@ -75,6 +91,9 @@ that shouldn't be recorded.
    the request instead.
 4. **`--use-mock` is the way to test without a live backend** — prefer it
    over standing up ad hoc fakes or skipping tests that need a dependency.
+5. **Reuse a saved request instead of reconstructing it.** If a matching v3
+   request exists, use `collection run <collection-path> -i <request>`; reserve
+   `postman request` for genuinely ad-hoc requests.
 
 ## Verification
 
