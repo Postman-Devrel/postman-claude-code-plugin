@@ -14,6 +14,14 @@ description: Default entry point for API engineering work — designing, impleme
 6. Don't push to the cloud workspace (`postman workspace push`) without user consent. The recommended way to push to the cloud is a CI step on PR merge - see **ci-integration**.
 7. For high-quality API search results, use **api-discovery**.
 8. No is an acceptable answer. Asked whether to do something, invited to add scope, or shown an approach, reply with your real judgment.
+9. Prefer filesystem-first Postman workflows. For an existing cloud workspace,
+   `postman workspace pull <id>` connects it and materializes its collections,
+   environments, and specs locally. When no cloud workspace exists, `postman
+   init --no-cloud` initializes the local structure. Work against those files,
+   validate them, and push only with user consent; sharing an already-bound
+   workspace means `workspace push`, not creating a duplicate. See
+   **bootstrap** for the lifecycle decision table.
+10. When actual use exposes a concrete Postman CLI gap or a misleading skill, handle the user's task first — then use `postman feedback` to report the gaps/bugs. Exclude secrets, user data, and proprietary content
 
 ## Dos
 1. Prove it works - validate the task against the contract. See **api-testing**.

@@ -83,12 +83,19 @@ assertions ran during one attempt, which failed, and why. Reach for these
 instead of re-running blind after a `-t` timeout, or whenever the task is
 explaining *why* a monitor failed rather than just that it did.
 
-## Self-hosted runners
+## Private (self-hosted) runners
+
+A private runner — the CLI's `runner regions` calls the same thing a
+"private-runner" value — is an agent you run inside your own network so
+Monitor traffic originates there instead of from Postman's cloud IPs. Reach
+for one only when the monitored API sits behind a VPN, firewall, or on-prem
+network that Postman's cloud can't reach directly; a public API should just
+use a Postman region (`--runner us-east`, etc.) since that needs no
+infrastructure of your own to run or maintain.
 
 `runner start --id <id> --key <key>` (from the Postman app) registers a
 runner that executes monitor runs from your own infrastructure instead of
-Postman's cloud. This matters only when the monitored API isn't reachable
-from the public internet — a public API needs no self-hosted runner. Extra
+Postman's cloud. Extra
 flags cover the runner's own networking: `--region eu` for EU residency,
 `--proxy`/`--egress-proxy`/`--egress-proxy-authz-url` for outbound routing,
 `--ssl-extra-ca-certs` for a private CA, and `--metrics`/`--metrics-port`
@@ -102,27 +109,21 @@ string.
 
 ## Critical Rules
 
-1. **Monitor creation and scheduling are real CLI tasks now.** Don't send
-   the user to the Postman app for this — `monitor create` with `-c` and
-   `--schedule` does it. Notifications here are email only
-   (`--notify-email`); a request for a different alert channel (Slack, a
-   webhook) is the one piece still worth checking against the app rather
-   than assuming a flag exists.
-2. **`update` can't move a monitor to a different collection or environment,
+1. **`update` can't move a monitor to a different collection or environment,
    and doesn't pause/resume it.** Delete and recreate for the former; use
    `pause`/`resume` for the latter.
-3. **A `monitor run -t` timeout is a wait cap, not a monitor failure.**
+2. **A `monitor run -t` timeout is a wait cap, not a monitor failure.**
    Don't report "the monitor failed" from a timeout without checking
    `monitor jobs get`/`monitor runs get` (or the Postman app) for what the
    run actually did after the CLI gave up waiting — or avoid the wait
    entirely with `--async`.
-4. **`--runner` on `monitor create`/`update` takes a region name or a
+3. **`--runner` on `monitor create`/`update` takes a region name or a
    self-hosted runner id — check `runner regions`/`runner list` before
    guessing a string,** and don't suggest `runner start` unless the target
    API genuinely isn't reachable from Postman's cloud.
-5. **`monitor list --offset` doesn't work — use `--cursor`,** and
+4. **`monitor list --offset` doesn't work — use `--cursor`,** and
    `--runner` there can't be combined with the other filters.
-6. **`monitor delete` is permanent.** Confirm intent before passing `-y` to
+5. **`monitor delete` is permanent.** Confirm intent before passing `-y` to
    skip its prompt.
 
 ## Verification
