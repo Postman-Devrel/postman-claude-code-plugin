@@ -123,8 +123,17 @@ more.
 
 ### 3.1 Check for an existing record
 
-Read `.postman/resources.yaml` for `localResources` and `workspace.id`.
-Populated → go to step 4. Absent or empty → run init.
+Read `.postman/resources.yaml` for `workspace.id`, and for `cloudResources`
+if you need the existing bindings.
+
+`workspace.id` non-empty → the repo is already initialised, go to step 4.
+File missing, or `workspace.id` empty → run init.
+
+Route on `workspace.id` alone. `postman init` writes only the `workspace`
+stanza; `cloudResources` is added later by `postman workspace push` and
+`postman mock push`, so an initialised repo that has not pushed yet has a
+valid `workspace.id` and no `cloudResources` at all. Treating that as
+"absent" re-runs init over a repo that is already bound.
 
 ### 3.2 Run init
 

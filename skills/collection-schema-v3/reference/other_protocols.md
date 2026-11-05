@@ -77,8 +77,10 @@ types — for the common case, the HTTP schema in the parent
 - `url` — string.
 - `order` — optional.
 - `config` — `{model, provider}`.
-- `userPrompts` — array of `{id, value, timestamp, active, type: "text"}`.
-- `systemPrompts` — array of `{id, value, timestamp, active, type: "text"}`.
+- `userPrompts` — array of `{id, value, timestamp, active, contentType: "text"}`.
+- `systemPrompts` — array of `{id, value, timestamp, active, contentType: "text"}`.
+  The field is `contentType`, not `type`: `type` lints clean and is then stripped,
+  so the content type is silently lost.
 - `mcpConfig` — optional string (JSON config).
 - `enabledTools` — optional array of strings.
 - `auth` — `{type, credentials}`.
