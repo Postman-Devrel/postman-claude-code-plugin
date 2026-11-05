@@ -10,6 +10,7 @@ jobs:
   json-validation:
     name: JSON Validation
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
         with:
@@ -22,6 +23,7 @@ jobs:
   frontmatter-validation:
     name: Frontmatter Validation
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
         with:
@@ -34,6 +36,7 @@ jobs:
   markdown-lint:
     name: Markdown Lint
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
         with:
@@ -47,6 +50,7 @@ jobs:
   link-check:
     name: Link Check
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
         with:
@@ -59,6 +63,7 @@ jobs:
   structure-integrity:
     name: Structure Integrity
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
         with:
@@ -71,6 +76,7 @@ jobs:
   version-sync:
     name: Version Sync
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
         with:
